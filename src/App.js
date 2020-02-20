@@ -1,53 +1,110 @@
 import React, { useState } from "react";
 import Result from "./pages/Result";
 import Settings from "./pages/Settings";
-import ErrorPage from "./pages/ErrorPage";
 import "./styles/App.scss";
 
 const APIKey = "0d90c0d99506c2d578ef4a5f8468ce4f";
 
-const getLocal = localStorage.getItem("townName")
-  ? localStorage.getItem("townName")
+// const getLocalName = localStorage.getItem("townName")
+//   ? localStorage.getItem("townName")
+//   : "";
+
+const getLocalData = localStorage.getItem("localData")
+  ? JSON.parse(localStorage.getItem("localData"))
+  : "";
+
+const getLocalTimeOfData = localStorage.getItem("timeOfData")
+  ? localStorage.getItem("timeOfData")
   : "";
 
 function App() {
-  const [inputContent, setInputContent] = useState(getLocal);
-  const [weatherData, setWeatherData] = useState("");
-  const [err, setErr] = useState(false);
+  const [inputContent, setInputContent] = useState("");
+  const [weatherData, setWeatherData] = useState(getLocalData);
+  const [isMainTown, setIsMainTown] = useState(false);
+  const [isFavourite, setIsFavourite] = useState(false);
+  const [time, setTime] = useState(getLocalTimeOfData);
 
   const handleChangeInputSettings = e => {
     setInputContent(e.target.value);
   };
 
+  const handleChangeCheckBox = () => {
+    setIsMainTown(!isMainTown);
+  };
+
+  const handleChangeCheckBoxFavourite = () => {
+    setIsFavourite(!isFavourite);
+  };
+
   const handleClickBtnSettings = () => {
     const API = `http://api.openweathermap.org/data/2.5/weather?q=${inputContent}&APPID=${APIKey}&units=metric`;
+
+    const dateClick = new Date().toLocaleDateString();
+    const timeClick = new Date().toLocaleTimeString();
 
     fetch(API)
       .then(res => {
         if (res.ok) {
-          localStorage.setItem("townName", inputContent);
-          setErr(false);
           return res.json();
         } else {
-          throw Error("COŚ POSZŁO NIE TAK!");
+          setInputContent("Nie ma takiego miasta");
+          throw Error("Nie ma takiego miasta!");
         }
       })
-      .then(result => setWeatherData(result))
+      .then(result => {
+        if (isMainTown) {
+          localStorage.setItem("townName", inputContent);
+          localStorage.setItem("localData", JSON.stringify(result));
+          localStorage.setItem("timeOfData", `${dateClick} ${timeClick}`);
+          setTime(localStorage.getItem("timeOfData"));
+        }
+        setWeatherData(result);
+      })
       .catch(err => {
         console.log(new Error(err.message));
-        setErr(true);
       });
 
     setInputContent("");
   };
 
+  const handleClickBtnRefresh = () => {
+    const localNameOfTown = localStorage.getItem("townName");
+    const API = `http://api.openweathermap.org/data/2.5/weather?q=${localNameOfTown}&APPID=${APIKey}&units=metric`;
+
+    const dateClick = new Date().toLocaleDateString();
+    const timeClick = new Date().toLocaleTimeString();
+
+    fetch(API)
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw Error("COŚ POSZŁO NIE TAK!");
+        }
+      })
+      .then(result => {
+        localStorage.setItem("localData", JSON.stringify(result));
+        setWeatherData(result);
+      })
+      .catch(err => {
+        console.log(new Error(err.message));
+      });
+    localStorage.setItem("timeOfData", `${dateClick} ${timeClick}`);
+    setTime(localStorage.getItem("timeOfData"));
+  };
+
   return (
     <div className="app">
-      {err ? <ErrorPage /> : <Result data={weatherData} />}
+      <Result data={weatherData} click={handleClickBtnRefresh} time={time} />
+
       <Settings
         value={inputContent}
         change={handleChangeInputSettings}
         click={handleClickBtnSettings}
+        isMainTown={isMainTown}
+        check={handleChangeCheckBox}
+        isFavourite={isFavourite}
+        checkFav={handleChangeCheckBoxFavourite}
       />
     </div>
   );
