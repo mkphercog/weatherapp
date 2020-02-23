@@ -1,10 +1,10 @@
 import React from "react";
 
-const SettingsInput = ({ value, change }) => {
+const SettingsInput = ({ valueInput, changeInput }) => {
   return (
     <label htmlFor="">
       Nazwa:
-      <input type="text" value={value} onChange={change} />
+      <input type="text" value={valueInput} onChange={changeInput} />
     </label>
   );
 };

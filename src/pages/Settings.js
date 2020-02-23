@@ -3,13 +3,13 @@ import SettingsInput from "../components/SettingsInput";
 import "../styles/Settings.scss";
 
 const Settings = ({
-  value,
-  change,
-  click,
+  valueInput,
+  changeInput,
+  clickAddBtn,
   isMainTown,
-  check,
+  checkIsMainTown,
   isFavourite,
-  checkFav,
+  checkIsFavourite,
   favouriteTowns,
   setMainTownBtn,
   deleteTownFromList,
@@ -34,7 +34,6 @@ const Settings = ({
             Sprawdz pogodę w tym mieście.
           </button>
         )}
-
         <button onClick={() => deleteTownFromList(town)}>X</button>
       </li>
     ));
@@ -43,15 +42,15 @@ const Settings = ({
   return (
     <div className="settings">
       <h1>Hello from Settings!</h1>
-      <SettingsInput value={value} change={change} />
-      <button onClick={click}>Sprawdź pogodę</button>
+      <SettingsInput valueInput={valueInput} changeInput={changeInput} />
+      <button onClick={clickAddBtn}>Sprawdź pogodę</button>
 
       <input
         type="checkbox"
         name="isMainTown"
         id="isMainTown"
         checked={isMainTown}
-        onChange={check}
+        onChange={checkIsMainTown}
       />
       <label htmlFor="isMainTown">Ustaw jako główne miasto.</label>
 
@@ -59,12 +58,18 @@ const Settings = ({
         type="checkbox"
         name="isFavourite"
         id="isFavourite"
-        checked={isFavourite}
-        onChange={checkFav}
+        checked={isMainTown ? isMainTown : isFavourite}
+        onChange={checkIsFavourite}
         disabled={isMainTown}
       />
       <label htmlFor="isFavourite">Dodaj do listy ulubionych miast.</label>
-      <ul>{arrOfTowns.reverse()}</ul>
+      {favouriteTowns.length ? (
+        <div>
+          <ul>{arrOfTowns.reverse()}</ul>
+        </div>
+      ) : (
+        <div>NIC TU NIE MA</div>
+      )}
     </div>
   );
 };
