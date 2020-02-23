@@ -1,6 +1,6 @@
 import React from "react";
 
-const SettingsInput = ({ valueInput, changeInput }) => {
+const SettingsInput = ({ valueInput, changeInput, err }) => {
   return (
     <label htmlFor="">
       Nazwa:

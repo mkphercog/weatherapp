@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Result from "./pages/Result";
 import Settings from "./pages/Settings";
+import ErrorPage from "./pages/ErrorPage";
 import "./styles/App.scss";
 
 // WEBSITE: `http://api.openweathermap.org/data/2.5/weather?q=${town_here}&APPID=${APIKey}&units=metric`;
@@ -33,6 +34,7 @@ function App() {
     getLocalListOfTowns
   );
   const [err, setErr] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   // --
 
   //GET TIME
@@ -95,22 +97,23 @@ function App() {
         setErr(false);
       })
       .catch(err => {
-        if (err === 404) {
-          console.log("Error 404!");
-        } else if (err === 400) {
-          console.log("Error 400!");
-        } else if (err === 500) {
-          console.log("Błąd serwera! 500!");
-        }
+        console.log(new Error(err));
         setErr(true);
+        if (localStorage.getItem("townName")) {
+          setErrorMessage("Błąd 404! Nazwa miasta błędna!");
+        } else {
+          setErrorMessage("Brak przypisanego miasta głównego!");
+        }
+        setTimeout(() => setErr(false), 2000);
       });
   };
   // --
 
   const handleClickAddTown = () => {
     if (inputContent === "") {
-      alert("Pusty!");
-      //tu dodaj czerwoną obwódkę na inpucie i mini koment dla urzytkownika że musi coś wpisać
+      setErr(true);
+      setErrorMessage("Wpisz nazwę miasta!");
+      setTimeout(() => setErr(false), 2000);
     } else {
       getDataAPI();
       setInputContent("");
@@ -159,7 +162,6 @@ function App() {
         weatherData={weatherData}
         clickRefreshBtn={handleClickBtnRefresh}
         time={time}
-        err={err}
       />
 
       <Settings
@@ -175,6 +177,8 @@ function App() {
         deleteTownFromList={deleteTownFromList}
         checkWeatherHere={checkWeatherHere}
       />
+
+      {err ? <ErrorPage errorMessage={errorMessage} /> : null}
     </div>
   );
 }
