@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SettingsInput from "../components/SettingsInput";
 import "../styles/Settings.scss";
 
@@ -17,6 +17,21 @@ const Settings = ({
   settingsVisible,
   showSettings
 }) => {
+  const [visible, setVisible] = useState(0);
+  const animationSpeed = 10;
+
+  const fun = num => {
+    setVisible(visible + num);
+  };
+
+  if (settingsVisible && visible < 100) {
+    setTimeout(() => fun(5), animationSpeed);
+  }
+
+  if (!settingsVisible && visible > 0) {
+    setTimeout(() => fun(-5), animationSpeed);
+  }
+
   let arrOfTowns = [];
 
   if (favouriteTowns) {
@@ -44,8 +59,8 @@ const Settings = ({
     <div
       className="settings"
       style={{
-        display: `${settingsVisible ? "block" : "none"}`
-        // animation: `0.5s linear ${settingsVisible ? "show" : "hide"}`
+        display: `${visible !== 0 ? "block" : "none"}`,
+        opacity: `${visible}%`
       }}
     >
       <h1>Ustawienia</h1>

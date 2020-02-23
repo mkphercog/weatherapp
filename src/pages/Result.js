@@ -26,13 +26,12 @@ const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
   return (
     <div className="result">
       <div className="result__wrapper">
-        <h1 className="result__title">Pogoda</h1>
         <h2>
           {name}
-          <span>({country})</span>
+          <span> ({country})</span>
         </h2>
 
-        <h1>{tempShow}°C</h1>
+        <h2>{tempShow}°C</h2>
         <p>{`${maxTempShow}°C / ${minTempShow}°C`}</p>
         <img
           src={`http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}
@@ -50,8 +49,8 @@ const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
         <p>Data ostatniej aktualizacji: {time ? time : "Brak danych"}</p>
         <button onClick={clickRefreshBtn}>Refresh data</button>
         {/* <ResultData /> */}
+        <button onClick={() => showSettings(true)}>Settings</button>
       </div>
-      <button onClick={() => showSettings(true)}>Settings</button>
     </div>
   );
 };
