@@ -1,4 +1,28 @@
 .result {
-  flex-basis: 45%;
-  background-color: #ddd;
+  height: 100vh;
+  background-image: url("../images/greenVillage.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  .result__wrapper {
+    margin: 0 auto;
+    width: 80%;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.55);
+    color: white;
+
+    .result__title {
+      font-size: 25px;
+      color: white;
+      text-transform: uppercase;
+    }
+    img {
+      width: 60px;
+      background-color: #fff;
+    }
+    p {
+      // background-color: grey;
+    }
+  }
 }

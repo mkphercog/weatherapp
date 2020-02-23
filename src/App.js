@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Result from "./pages/Result";
 import Settings from "./pages/Settings";
 import ErrorPage from "./pages/ErrorPage";
+import NoResult from "./NoResult.json";
 import "./styles/App.scss";
 
-// WEBSITE: `http://api.openweathermap.org/data/2.5/weather?q=${town_here}&APPID=${APIKey}&units=metric`;
+//WEBSITE: http://api.openweathermap.org/data/2.5/weather?q=${townName}&APPID=${APIKey}&lang=pl&units=metric
 const APIKey = "0d90c0d99506c2d578ef4a5f8468ce4f";
 //My key: 0d90c0d99506c2d578ef4a5f8468ce4f
 //My other key: 7eee9c2a3bb4e9f3e8da0776821d2ca0
 
-// LOCALSTORAGE WHEN REFRESH WEB OR FIRST VISIT--
+// LOCALSTORAGE --
 const getLocalData = localStorage.getItem("localData")
   ? JSON.parse(localStorage.getItem("localData"))
-  : "";
+  : NoResult;
 
 const getLocalTimeOfData = localStorage.getItem("timeOfData")
   ? localStorage.getItem("timeOfData")
@@ -35,6 +36,19 @@ function App() {
   );
   const [err, setErr] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [settingsVisible, setSettingVisible] = useState(false);
+  const [firstVisitWeb, setFirstVisitWeb] = useState(true);
+
+  useEffect(() => {
+    if (!localStorage.getItem("townName")) {
+      localStorage.setItem("townName", "Warszawa");
+      getDataAPI("Warszawa");
+    } else if (localStorage.getItem("townName") && firstVisitWeb) {
+      setFirstVisitWeb(false);
+      getDataAPI(localStorage.getItem("townName"));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [firstVisitWeb]);
   // --
 
   //GET TIME
@@ -47,7 +61,7 @@ function App() {
 
   //ONE FETCH FUNCTION
   const getDataAPI = (townName = inputContent) => {
-    const API = `http://api.openweathermap.org/data/2.5/weather?q=${townName}&APPID=${APIKey}&units=metric`;
+    const API = `http://api.openweathermap.org/data/2.5/weather?q=${townName}&APPID=${APIKey}&lang=pl&units=metric`;
     const time = getDate();
 
     fetch(API)
@@ -62,7 +76,7 @@ function App() {
         if (townName === inputContent) {
           if (isFavourite || isMainTown) {
             const checkDoubleName = listOfFavouriteTowns.findIndex(
-              town => town === townName
+              town => town.toUpperCase() === townName.toUpperCase()
             );
             if (checkDoubleName === -1) {
               let newArr = listOfFavouriteTowns;
@@ -77,10 +91,12 @@ function App() {
               if (isMainTown) {
                 localStorage.setItem("townName", townName);
                 localStorage.setItem("localData", JSON.stringify(result));
+                setSettingVisible(false);
               }
             } else {
-              alert("Miasto jest już zapisane!");
-              //coś do powiadomienia urzytkownika o tym samym miescie na liscie
+              setErr(true);
+              setErrorMessage("Miaso istnieje już na liście!");
+              setTimeout(() => setErr(false), 2000);
             }
           }
         }
@@ -94,15 +110,17 @@ function App() {
         }
 
         setWeatherData(result);
-        setErr(false);
+        if (!isMainTown && !isFavourite) {
+          setSettingVisible(false);
+        }
       })
       .catch(err => {
         console.log(new Error(err));
         setErr(true);
-        if (localStorage.getItem("townName")) {
-          setErrorMessage("Błąd 404! Nazwa miasta błędna!");
-        } else {
+        if (!localStorage.getItem("townName")) {
           setErrorMessage("Brak przypisanego miasta głównego!");
+        } else {
+          setErrorMessage(`Nie istnieje miasto o nazwie ${inputContent}!`);
         }
         setTimeout(() => setErr(false), 2000);
       });
@@ -133,6 +151,7 @@ function App() {
 
   const checkWeatherHere = town => {
     getDataAPI(town);
+    setSettingVisible(false);
   };
 
   const handleChangeInputSettings = e => {
@@ -152,8 +171,14 @@ function App() {
     setListOfFavouriteTowns(arr);
     if (town === localStorage.getItem("townName")) {
       localStorage.clear();
+      setWeatherData(NoResult);
+      setTime("");
     }
     localStorage.setItem("favouriteTownsList", JSON.stringify(arr));
+  };
+
+  const showSettings = bool => {
+    setSettingVisible(bool);
   };
 
   return (
@@ -162,6 +187,7 @@ function App() {
         weatherData={weatherData}
         clickRefreshBtn={handleClickBtnRefresh}
         time={time}
+        showSettings={showSettings}
       />
 
       <Settings
@@ -176,6 +202,8 @@ function App() {
         setMainTownBtn={setMainTownBtn}
         deleteTownFromList={deleteTownFromList}
         checkWeatherHere={checkWeatherHere}
+        settingsVisible={settingsVisible}
+        showSettings={showSettings}
       />
 
       {err ? <ErrorPage errorMessage={errorMessage} /> : null}

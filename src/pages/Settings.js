@@ -13,7 +13,9 @@ const Settings = ({
   favouriteTowns,
   setMainTownBtn,
   deleteTownFromList,
-  checkWeatherHere
+  checkWeatherHere,
+  settingsVisible,
+  showSettings
 }) => {
   let arrOfTowns = [];
 
@@ -38,10 +40,15 @@ const Settings = ({
       </li>
     ));
   }
-
   return (
-    <div className="settings">
-      <h1>Hello from Settings!</h1>
+    <div
+      className="settings"
+      style={{
+        display: `${settingsVisible ? "block" : "none"}`
+        // animation: `0.5s linear ${settingsVisible ? "show" : "hide"}`
+      }}
+    >
+      <h1>Ustawienia</h1>
       <SettingsInput valueInput={valueInput} changeInput={changeInput} />
       <button onClick={clickAddBtn}>Sprawdź pogodę</button>
 
@@ -70,6 +77,7 @@ const Settings = ({
       ) : (
         <div>NIC TU NIE MA</div>
       )}
+      <button onClick={() => showSettings(false)}>CLOSE</button>
     </div>
   );
 };
