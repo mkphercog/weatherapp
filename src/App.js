@@ -120,7 +120,9 @@ function App() {
         if (!localStorage.getItem("townName")) {
           setErrorMessage("Brak przypisanego miasta głównego!");
         } else {
-          setErrorMessage(`Nie istnieje miasto o nazwie ${inputContent}!`);
+          setErrorMessage(
+            `Nie istnieje miasto o nazwie ${inputContent.toUpperCase()}!`
+          );
         }
         setTimeout(() => setErr(false), 2000);
       });
