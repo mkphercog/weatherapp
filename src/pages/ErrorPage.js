@@ -4,7 +4,7 @@ import "../styles/ErrorPage.scss";
 const ErrorPage = ({ errorMessage }) => {
   return (
     <div className="errorPage">
-      <h1>{errorMessage}</h1>
+      <h1 className="errorPage__message">{errorMessage}</h1>
     </div>
   );
 };

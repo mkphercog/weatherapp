@@ -1,31 +1,195 @@
 .result {
   min-height: 100vh;
+  padding: 5% 0;
   background-image: url("../images/greenVillage.jpg");
   background-size: cover;
   background-repeat: repeat;
   background-position: center;
 
   .result__wrapper {
-    margin: 0 auto;
-    height: 100vh;
-    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 92%;
+    overflow-x: hidden;
+    overflow-y: auto;
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.55);
     color: white;
 
-    .result__title {
-      font-size: 22px;
-      color: white;
-      text-transform: uppercase;
+    @media (min-width: 1024px) {
+      max-width: 50%;
     }
-    img {
-      background-size: cover;
-      width: 80px;
+    @media (min-width: 1280px) {
+      max-width: 42%;
+    }
+    @media (min-width: 1600px) {
+      max-width: 35%;
+    }
+
+    .result__townName {
+      margin-top: 10px;
+      padding: 5px;
+      font-size: 26px;
+      text-transform: uppercase;
+      text-align: center;
+
+      @media (min-width: 411px) {
+        font-size: 32px;
+      }
+      @media (min-width: 768px) {
+        font-size: 42px;
+      }
+    }
+
+    .result__wrapperTemp {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      .result__temp {
+        font-size: 33px;
+
+        @media (min-width: 411px) {
+          font-size: 35px;
+        }
+        @media (min-width: 768px) {
+          font-size: 45px;
+        }
+      }
+
+      .result__maxMinTemp {
+        font-size: 16px;
+
+        @media (min-width: 411px) {
+          font-size: 17px;
+        }
+        @media (min-width: 768px) {
+          font-size: 21px;
+        }
+      }
+    }
+
+    .result__weatherIcon {
+      margin: 10px 0;
+      width: 75px;
       background-color: rgba(255, 255, 255, 0.4);
       border-radius: 50%;
+
+      @media (min-width: 411px) {
+        width: 85px;
+      }
+      @media (min-width: 768px) {
+        width: 100px;
+      }
     }
-    h3 {
-      font-size: 22px;
+
+    .result__wrapperInfo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+
+      .result__infoText {
+        font-size: 16px;
+
+        @media (min-width: 411px) {
+          font-size: 17px;
+        }
+        @media (min-width: 768px) {
+          font-size: 23px;
+        }
+        .result__info {
+          font-weight: bold;
+        }
+      }
     }
+
+    .result__wrapperIcons {
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+      margin: 35px 0 5px;
+
+      .result__refreshIcon {
+        font-size: 35px;
+        @media (min-width: 411px) {
+          font-size: 40px;
+        }
+        @media (min-width: 768px) {
+          font-size: 60px;
+        }
+      }
+      @media (min-width: 1024px) {
+        .result__refreshIcon:hover {
+          animation: rotate 0.5s linear both;
+        }
+        @keyframes rotate {
+          from {
+            transform: rotate(0);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      }
+      .result__settingsIcon {
+        font-size: 35px;
+        @media (min-width: 411px) {
+          font-size: 40px;
+        }
+        @media (min-width: 768px) {
+          font-size: 60px;
+        }
+        @media (min-width: 1024px) {
+          transition: 0.2s;
+        }
+      }
+      @media (min-width: 1024px) {
+        .result__settingsIcon:hover {
+          color: lightsteelblue;
+        }
+      }
+    }
+
+    .result__dateOfRefresh {
+      margin: 10px 0 15px;
+      font-size: 15px;
+      @media (min-width: 411px) {
+        font-size: 16px;
+      }
+      @media (min-width: 768px) {
+        font-size: 20px;
+      }
+      @media (min-width: 768px) {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px #aaa;
+    border-radius: 10px;
+    margin: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(192, 192, 192, 0.5);
+    border-radius: 10px;
   }
 }

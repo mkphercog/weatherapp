@@ -38,20 +38,24 @@ const Settings = ({
     arrOfTowns = favouriteTowns.map((town, index) => (
       <li key={index}>
         {localStorage.getItem("townName") === town ? (
-          <span>GŁÓWNE: </span>
+          <i className="fas fa-home"></i>
         ) : null}
         <span>{town}</span>
         {localStorage.getItem("townName") === town ? null : (
           <button onClick={() => setMainTownBtn(town)}>
-            Ustaw jako główne miasto.
+            Zmień na główne miasto.
           </button>
         )}
         {localStorage.getItem("townName") === town ? null : (
           <button onClick={() => checkWeatherHere(town)}>
-            Sprawdz pogodę w tym mieście.
+            Sprawdź pogodę.
           </button>
         )}
-        <button onClick={() => deleteTownFromList(town)}>X</button>
+        <i
+          onClick={() => deleteTownFromList(town)}
+          className="fas fa-trash-alt"
+        ></i>
+        {/* <button onClick={() => deleteTownFromList(town)}>X</button> */}
       </li>
     ));
   }
@@ -92,7 +96,11 @@ const Settings = ({
       ) : (
         <div>NIC TU NIE MA</div>
       )}
-      <button onClick={() => showSettings(false)}>CLOSE</button>
+      <i
+        className="fas fa-times settings__close"
+        onClick={() => showSettings(false)}
+      ></i>
+      {/* <button onClick={() => showSettings(false)}>CLOSE</button> */}
     </div>
   );
 };

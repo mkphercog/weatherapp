@@ -10,4 +10,14 @@
   ul {
     list-style: none;
   }
+  .fa-city {
+    color: black;
+    font-size: 100px;
+  }
+  .settings__close {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    font-size: 40px;
+  }
 }
