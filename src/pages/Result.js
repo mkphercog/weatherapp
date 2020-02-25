@@ -9,6 +9,8 @@ const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
 
   const { sunrise, sunset } = sys;
 
+  const windKmH = wind.speed * 3.6;
+
   const sunUp = new Date((sunrise + 3600) * 1000);
   const sunDown = new Date((sunset + 3600) * 1000);
 
@@ -54,7 +56,7 @@ const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
           </p>
           <p className="result__infoText">
             Prędkość wiatru:{" "}
-            <span className="result__info">{wind.speed * 3.6} km/h</span>
+            <span className="result__info">{windKmH.toFixed(2)} km/h</span>
           </p>
           <p className="result__infoText">
             Wschód słońca:{" "}

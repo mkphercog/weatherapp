@@ -73,7 +73,7 @@ function App() {
         }
       })
       .then(result => {
-        if (townName === inputContent) {
+        if (townName === inputContent.trim()) {
           if (isFavourite || isMainTown) {
             const checkDoubleName = listOfFavouriteTowns.findIndex(
               town => town.toUpperCase() === townName.toUpperCase()
@@ -135,7 +135,8 @@ function App() {
       setErrorMessage("Wpisz nazwę miasta!");
       setTimeout(() => setErr(false), 2000);
     } else {
-      getDataAPI();
+      const inputTrimed = inputContent.trim();
+      getDataAPI(inputTrimed);
       setInputContent("");
       setIsFavourite(false);
       setIsMainTown(false);

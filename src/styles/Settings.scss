@@ -57,6 +57,9 @@
           width: 40%;
           font-size: 21px;
         }
+        @media (min-width: 1024px) {
+          cursor: pointer;
+        }
       }
       .settings__checkLabel {
         display: flex;
@@ -81,6 +84,9 @@
           @media (min-width: 768px) {
             width: 23px;
             height: 23px;
+          }
+          @media (min-width: 1024px) {
+            cursor: pointer;
           }
         }
       }
@@ -170,6 +176,9 @@
               @media (min-width: 768px) {
                 font-size: 30px;
               }
+              @media (min-width: 1024px) {
+                cursor: pointer;
+              }
             }
           }
           .settings__wrapperBtn {
@@ -198,6 +207,9 @@
                 margin: 10px 0;
                 font-size: 17px;
               }
+              @media (min-width: 1024px) {
+                cursor: pointer;
+              }
             }
           }
         }
@@ -214,6 +226,9 @@
         top: 20px;
         right: 20px;
         font-size: 50px;
+      }
+      @media (min-width: 1024px) {
+        cursor: pointer;
       }
     }
 
