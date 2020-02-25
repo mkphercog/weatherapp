@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/weatherapp/static/css/main.77821ad2.chunk.css",
+    "main.js": "/weatherapp/static/js/main.25921cd8.chunk.js",
+    "main.js.map": "/weatherapp/static/js/main.25921cd8.chunk.js.map",
+    "runtime-main.js": "/weatherapp/static/js/runtime-main.23a29212.js",
+    "runtime-main.js.map": "/weatherapp/static/js/runtime-main.23a29212.js.map",
+    "static/js/2.efefa1b5.chunk.js": "/weatherapp/static/js/2.efefa1b5.chunk.js",
+    "static/js/2.efefa1b5.chunk.js.map": "/weatherapp/static/js/2.efefa1b5.chunk.js.map",
+    "index.html": "/weatherapp/index.html",
+    "precache-manifest.660116d8d026e6aec7c61d0967eed0d5.js": "/weatherapp/precache-manifest.660116d8d026e6aec7c61d0967eed0d5.js",
+    "service-worker.js": "/weatherapp/service-worker.js",
+    "static/css/main.77821ad2.chunk.css.map": "/weatherapp/static/css/main.77821ad2.chunk.css.map",
+    "static/js/2.efefa1b5.chunk.js.LICENSE.txt": "/weatherapp/static/js/2.efefa1b5.chunk.js.LICENSE.txt",
+    "static/media/Result.scss": "/weatherapp/static/media/greenVillage.f2d72682.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.23a29212.js",
+    "static/js/2.efefa1b5.chunk.js",
+    "static/css/main.77821ad2.chunk.css",
+    "static/js/main.25921cd8.chunk.js"
+  ]
+}
