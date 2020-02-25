@@ -5,7 +5,7 @@ import ErrorPage from "./pages/ErrorPage";
 import NoResult from "./NoResult.json";
 import "./styles/App.scss";
 
-//WEBSITE: http://api.openweathermap.org/data/2.5/weather?q=${townName}&APPID=${APIKey}&lang=pl&units=metric
+//WEBSITE: https://api.openweathermap.org/data/2.5/weather?q=${townName}&APPID=${APIKey}&lang=pl&units=metric
 const APIKey = "0d90c0d99506c2d578ef4a5f8468ce4f";
 //My key: 0d90c0d99506c2d578ef4a5f8468ce4f
 //My other key: 7eee9c2a3bb4e9f3e8da0776821d2ca0
@@ -61,7 +61,7 @@ function App() {
 
   //ONE FETCH FUNCTION
   const getDataAPI = (townName = inputContent) => {
-    const API = `http://api.openweathermap.org/data/2.5/weather?q=${townName}&APPID=${APIKey}&lang=pl&units=metric`;
+    const API = `https://api.openweathermap.org/data/2.5/weather?q=${townName}&APPID=${APIKey}&lang=pl&units=metric`;
     const time = getDate();
 
     fetch(API)

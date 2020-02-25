@@ -35,7 +35,7 @@ const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
 
         <img
           className="result__weatherIcon"
-          src={`http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}
+          src={`https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}
           alt="Weather icon."
         />
 
