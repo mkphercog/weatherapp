@@ -1,11 +1,14 @@
 import React from "react";
 
-const SettingsInput = ({ valueInput, changeInput, err }) => {
+const SettingsInput = ({ valueInput, changeInput }) => {
   return (
-    <label htmlFor="">
-      Nazwa:
-      <input type="text" value={valueInput} onChange={changeInput} />
-    </label>
+    <input
+      type="text"
+      value={valueInput}
+      onChange={changeInput}
+      className="settings__input"
+      placeholder="Nazwa miasta..."
+    />
   );
 };
 

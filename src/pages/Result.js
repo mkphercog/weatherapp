@@ -54,7 +54,7 @@ const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
           </p>
           <p className="result__infoText">
             Prędkość wiatru:{" "}
-            <span className="result__info">{wind.speed} m/s</span>
+            <span className="result__info">{wind.speed * 3.6} km/h</span>
           </p>
           <p className="result__infoText">
             Wschód słońca:{" "}
