@@ -1,6 +1,5 @@
 .errorPage {
   display: flex;
-  align-items: center;
   justify-content: center;
   position: fixed;
   top: 0;
@@ -8,6 +7,7 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(100, 0, 0, 0.7);
+  align-items: center;
 
   .errorPage__message {
     margin: 20px;

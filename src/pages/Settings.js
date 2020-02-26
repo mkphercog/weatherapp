@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import SettingsInput from "../components/SettingsInput";
+import BtnAddTown from "../components/BtnAddTown";
+import CheckBoxes from "../components/CheckBoxes";
+import FavouriteTownList from "../components/FavouriteTownList";
+import CloseSettings from "../components/CloseSettings";
 import "../styles/Settings.scss";
 
 const Settings = ({
@@ -17,6 +21,13 @@ const Settings = ({
   settingsVisible,
   showSettings
 }) => {
+  const [visible, setVisible] = useState(0);
+  const animationSpeed = 10;
+
+  const settingsAnimation = num => {
+    setVisible(visible + num);
+  };
+
   const scrollUp = () => {
     if (document.getElementById("settings").scrollTop > 0) {
       document.getElementById("settings").scrollTop -= 5;
@@ -24,65 +35,14 @@ const Settings = ({
     }
   };
 
-  const [visible, setVisible] = useState(0);
-  const animationSpeed = 10;
-
-  const fun = num => {
-    setVisible(visible + num);
-  };
-
   if (settingsVisible && visible < 100) {
     scrollUp();
-    setTimeout(() => fun(5), animationSpeed);
+    setTimeout(() => settingsAnimation(5), animationSpeed);
   }
 
   if (!settingsVisible && visible > 0) {
-    setTimeout(() => fun(-5), animationSpeed);
+    setTimeout(() => settingsAnimation(-5), animationSpeed);
   }
-
-  let arrOfTowns = [];
-
-  arrOfTowns = favouriteTowns.map((town, index) => (
-    <li className="settings__listItem" key={index}>
-      <div className="settings__wrapperIconName">
-        {localStorage.getItem("townName") === town ? (
-          <i className="fas fa-home settings__homeIcon"></i>
-        ) : (
-          <i className="fas fa-home settings__homeIcon settings__homeIcon--disabled"></i>
-        )}
-        <span className="settings__townName">{town}</span>
-        <i
-          onClick={() => deleteTownFromList(town)}
-          className="fas fa-trash-alt settings__trashIcon"
-        ></i>
-      </div>
-      <div className="settings__wrapperBtn">
-        {localStorage.getItem("townName") === town ? null : (
-          <button
-            className="settings__btn"
-            onClick={() => setMainTownBtn(town)}
-          >
-            Główne miasto
-          </button>
-        )}
-        <button
-          className="settings__btn"
-          onClick={() => checkWeatherHere(town)}
-        >
-          Sprawdź pogodę
-        </button>
-      </div>
-    </li>
-  ));
-
-  const mainTown = arrOfTowns.find(
-    item =>
-      item.props.children[0].props.children[0].props.className ===
-      "fas fa-home settings__homeIcon"
-  );
-  const otherTowns = arrOfTowns.filter(item => item !== mainTown);
-
-  const showTowns = [mainTown, otherTowns];
 
   return (
     <div
@@ -98,49 +58,32 @@ const Settings = ({
 
         <div className="settings__wrapperAddTown">
           <SettingsInput valueInput={valueInput} changeInput={changeInput} />
-          <button className="settings__btn" onClick={clickAddBtn}>
-            Sprawdź pogodę
-          </button>
-          <label className="settings__checkLabel" htmlFor="isMainTown">
-            <input
-              type="checkbox"
-              name="isMainTown"
-              id="isMainTown"
-              className="settings__check"
-              checked={isMainTown}
-              onChange={checkIsMainTown}
-            />
-            Ustaw jako główne miasto.
-          </label>
-
-          <label className="settings__checkLabel" htmlFor="isFavourite">
-            <input
-              type="checkbox"
-              name="isFavourite"
-              id="isFavourite"
-              className="settings__check"
-              checked={isMainTown ? isMainTown : isFavourite}
-              onChange={checkIsFavourite}
-              disabled={isMainTown}
-            />
-            Dodaj do listy ulubionych miast.
-          </label>
+          <BtnAddTown clickAddBtn={clickAddBtn} />
+          <CheckBoxes
+            isMainTown={isMainTown}
+            checkIsMainTown={checkIsMainTown}
+            isFavourite={isFavourite}
+            checkIsFavourite={checkIsFavourite}
+          />
         </div>
 
         <div className="settings__wrapperFavouriteList">
           <h3 className="settings__favouriteTitle">Lista ulubionych miast</h3>
           <ul className="settings__favouriteList">
             {favouriteTowns.length ? (
-              showTowns
+              <FavouriteTownList
+                favouriteTowns={favouriteTowns}
+                setMainTownBtn={setMainTownBtn}
+                deleteTownFromList={deleteTownFromList}
+                checkWeatherHere={checkWeatherHere}
+              />
             ) : (
               <li className="settings__listItem">Brak danych.</li>
             )}
           </ul>
         </div>
-        <i
-          className="fas fa-times settings__close"
-          onClick={() => showSettings(false)}
-        ></i>
+        <CloseSettings showSettings={showSettings} />
+
         <p className="settings__author">Projekt i realizacja: Marcin Hercog</p>
       </div>
     </div>

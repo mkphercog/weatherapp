@@ -1,11 +1,11 @@
 .settings {
-  background-color: rgba(255, 255, 255, 0.9);
   position: fixed;
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
   overflow-y: auto;
+  background-color: rgba(255, 255, 255, 0.9);
 
   .settings__wrapper {
     width: 100%;
@@ -40,6 +40,7 @@
           font-size: 20px;
         }
       }
+
       .settings__btn {
         width: 60%;
         margin: 0 auto;
@@ -57,10 +58,12 @@
           width: 40%;
           font-size: 21px;
         }
+
         @media (min-width: 1024px) {
           cursor: pointer;
         }
       }
+
       .settings__checkLabel {
         display: flex;
         align-items: center;
@@ -85,6 +88,7 @@
             width: 23px;
             height: 23px;
           }
+
           @media (min-width: 1024px) {
             cursor: pointer;
           }
@@ -110,12 +114,11 @@
         .settings__listItem {
           display: flex;
           flex-direction: column;
-          align-items: center;
           flex-wrap: wrap;
-          overflow: hidden;
-
           width: 100%;
           margin: 12px 0;
+          align-items: center;
+          overflow: hidden;
           background-color: rgba(90, 90, 90, 0.63);
           border-radius: 10px;
 
@@ -127,6 +130,7 @@
           @media (min-width: 1280px) {
             width: 50%;
           }
+
           @media (min-width: 1600px) {
             width: 40%;
           }
@@ -138,9 +142,9 @@
             width: 100%;
 
             .settings__homeIcon {
+              margin: 5px 0 5px 10px;
               color: yellowgreen;
               font-size: 25px;
-              margin: 5px 0 5px 10px;
 
               @media (min-width: 768px) {
                 font-size: 30px;
@@ -152,8 +156,8 @@
             }
 
             .settings__townName {
-              text-align: left;
               padding-left: 8px;
+              text-align: left;
               flex-grow: 1;
               font-size: 15px;
               font-weight: bold;
@@ -169,9 +173,9 @@
             }
 
             .settings__trashIcon {
+              margin: 5px 10px 5px 0;
               color: darkred;
               font-size: 25px;
-              margin: 5px 10px 5px 0;
 
               @media (min-width: 768px) {
                 font-size: 30px;
@@ -181,10 +185,11 @@
               }
             }
           }
+
           .settings__wrapperBtn {
             display: flex;
-            width: 100%;
             justify-content: space-around;
+            width: 100%;
             margin-bottom: 5px;
 
             .settings__btn {
@@ -194,9 +199,9 @@
               text-transform: uppercase;
               border: none;
               border-radius: 5px;
+              border-bottom: 2px solid black;
               background-color: #ddd;
               color: black;
-              border-bottom: 2px solid black;
               outline: none;
 
               @media (min-width: 411px) {

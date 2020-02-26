@@ -1,28 +1,19 @@
 import React from "react";
-// import ResultData from "../components/ResultData";
+import BtnRefreshData from "../components/BtnRefreshData";
+import BtnShowSettings from "../components/BtnShowSettings";
 import "../styles/Result.scss";
 
 const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
-  const scrollUp = () => {
-    if (document.getElementById("result__wrapper").scrollTop > 0) {
-      document.getElementById("result__wrapper").scrollTop -= 5;
-      setTimeout(scrollUp, 5);
-    }
-  };
-
   const { main, name, weather, wind, sys } = weatherData;
-
   const { temp, feels_like, temp_min, temp_max, pressure, humidity } = main;
-
   const { sunrise, sunset } = sys;
-
-  const windKmH = wind.speed * 3.6;
 
   const sunUp = new Date((sunrise + 3600) * 1000);
   const sunDown = new Date((sunset + 3600) * 1000);
-
   const sunUpText = sunUp.toUTCString();
   const sunDownText = sunDown.toUTCString();
+
+  const windKmH = wind.speed * 3.6;
 
   const tempShow = temp < 0 && temp >= -0.49 ? 0 : temp.toFixed();
   const feelsLikeShow =
@@ -31,6 +22,13 @@ const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
     temp_min < 0 && temp_min >= -0.49 ? 0 : temp_min.toFixed();
   const maxTempShow =
     temp_max < 0 && temp_max >= -0.49 ? 0 : temp_max.toFixed();
+
+  const scrollUp = () => {
+    if (document.getElementById("result__wrapper").scrollTop > 0) {
+      document.getElementById("result__wrapper").scrollTop -= 5;
+      setTimeout(scrollUp, 5);
+    }
+  };
 
   return (
     <div className="result">
@@ -76,20 +74,11 @@ const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
         </div>
 
         <div className="result__wrapperIcons">
-          <i
-            onClick={() => {
-              scrollUp();
-              clickRefreshBtn();
-            }}
-            className="fas fa-sync-alt result__refreshIcon"
-          ></i>
-          <i
-            onClick={() => {
-              scrollUp();
-              showSettings(true);
-            }}
-            className="fas fa-cogs result__settingsIcon"
-          ></i>
+          <BtnRefreshData
+            scrollUp={scrollUp}
+            clickRefreshBtn={clickRefreshBtn}
+          />
+          <BtnShowSettings scrollUp={scrollUp} showSettings={showSettings} />
         </div>
 
         <p className="result__dateOfRefresh">
