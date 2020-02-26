@@ -17,6 +17,13 @@ const Settings = ({
   settingsVisible,
   showSettings
 }) => {
+  const scrollUp = () => {
+    if (document.getElementById("settings").scrollTop > 0) {
+      document.getElementById("settings").scrollTop -= 5;
+      setTimeout(scrollUp, 10);
+    }
+  };
+
   const [visible, setVisible] = useState(0);
   const animationSpeed = 10;
 
@@ -25,6 +32,7 @@ const Settings = ({
   };
 
   if (settingsVisible && visible < 100) {
+    scrollUp();
     setTimeout(() => fun(5), animationSpeed);
   }
 
@@ -34,44 +42,52 @@ const Settings = ({
 
   let arrOfTowns = [];
 
-  if (favouriteTowns) {
-    arrOfTowns = favouriteTowns.map((town, index) => (
-      <li className="settings__listItem" key={index}>
-        <div className="settings__wrapperIconName">
-          {localStorage.getItem("townName") === town ? (
-            <i className="fas fa-home settings__homeIcon"></i>
-          ) : (
-            <i className="fas fa-home settings__homeIcon settings__homeIcon--disabled"></i>
-          )}
-          <span className="settings__townName">{town}</span>
-          <i
-            onClick={() => deleteTownFromList(town)}
-            className="fas fa-trash-alt settings__trashIcon"
-          ></i>
-        </div>
-        <div className="settings__wrapperBtn">
-          {localStorage.getItem("townName") === town ? null : (
-            <button
-              className="settings__btn"
-              onClick={() => setMainTownBtn(town)}
-            >
-              Główne miasto
-            </button>
-          )}
+  arrOfTowns = favouriteTowns.map((town, index) => (
+    <li className="settings__listItem" key={index}>
+      <div className="settings__wrapperIconName">
+        {localStorage.getItem("townName") === town ? (
+          <i className="fas fa-home settings__homeIcon"></i>
+        ) : (
+          <i className="fas fa-home settings__homeIcon settings__homeIcon--disabled"></i>
+        )}
+        <span className="settings__townName">{town}</span>
+        <i
+          onClick={() => deleteTownFromList(town)}
+          className="fas fa-trash-alt settings__trashIcon"
+        ></i>
+      </div>
+      <div className="settings__wrapperBtn">
+        {localStorage.getItem("townName") === town ? null : (
           <button
             className="settings__btn"
-            onClick={() => checkWeatherHere(town)}
+            onClick={() => setMainTownBtn(town)}
           >
-            Sprawdź pogodę
+            Główne miasto
           </button>
-        </div>
-      </li>
-    ));
-  }
+        )}
+        <button
+          className="settings__btn"
+          onClick={() => checkWeatherHere(town)}
+        >
+          Sprawdź pogodę
+        </button>
+      </div>
+    </li>
+  ));
+
+  const mainTown = arrOfTowns.find(
+    item =>
+      item.props.children[0].props.children[0].props.className ===
+      "fas fa-home settings__homeIcon"
+  );
+  const otherTowns = arrOfTowns.filter(item => item !== mainTown);
+
+  const showTowns = [mainTown, otherTowns];
 
   return (
     <div
       className="settings"
+      id="settings"
       style={{
         display: `${visible !== 0 ? "block" : "none"}`,
         opacity: `${visible}%`
@@ -111,19 +127,16 @@ const Settings = ({
           </label>
         </div>
 
-        {favouriteTowns.length ? (
-          <div className="settings__wrapperFavouriteList">
-            <h3 className="settings__favouriteTitle">Lista ulubionych miast</h3>
-            <ul className="settings__favouriteList">{arrOfTowns.reverse()}</ul>
-          </div>
-        ) : (
-          <div className="settings__wrapperFavouriteList">
-            <h3 className="settings__favouriteTitle">Lista ulubionych miast</h3>
-            <ul className="settings__favouriteList">
+        <div className="settings__wrapperFavouriteList">
+          <h3 className="settings__favouriteTitle">Lista ulubionych miast</h3>
+          <ul className="settings__favouriteList">
+            {favouriteTowns.length ? (
+              showTowns
+            ) : (
               <li className="settings__listItem">Brak danych.</li>
-            </ul>
-          </div>
-        )}
+            )}
+          </ul>
+        </div>
         <i
           className="fas fa-times settings__close"
           onClick={() => showSettings(false)}

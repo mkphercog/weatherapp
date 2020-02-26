@@ -3,6 +3,13 @@ import React from "react";
 import "../styles/Result.scss";
 
 const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
+  const scrollUp = () => {
+    if (document.getElementById("result__wrapper").scrollTop > 0) {
+      document.getElementById("result__wrapper").scrollTop -= 5;
+      setTimeout(scrollUp, 5);
+    }
+  };
+
   const { main, name, weather, wind, sys } = weatherData;
 
   const { temp, feels_like, temp_min, temp_max, pressure, humidity } = main;
@@ -27,7 +34,7 @@ const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
 
   return (
     <div className="result">
-      <div className="result__wrapper">
+      <div className="result__wrapper" id="result__wrapper">
         <h1 className="result__townName">{name}</h1>
 
         <div className="result__wrapperTemp">
@@ -70,11 +77,17 @@ const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
 
         <div className="result__wrapperIcons">
           <i
-            onClick={clickRefreshBtn}
+            onClick={() => {
+              scrollUp();
+              clickRefreshBtn();
+            }}
             className="fas fa-sync-alt result__refreshIcon"
           ></i>
           <i
-            onClick={() => showSettings(true)}
+            onClick={() => {
+              scrollUp();
+              showSettings(true);
+            }}
             className="fas fa-cogs result__settingsIcon"
           ></i>
         </div>
