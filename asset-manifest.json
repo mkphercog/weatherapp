@@ -1,23 +1,27 @@
 {
   "files": {
-    "main.css": "/weatherapp/static/css/main.5709b125.chunk.css",
-    "main.js": "/weatherapp/static/js/main.44bb0e23.chunk.js",
-    "main.js.map": "/weatherapp/static/js/main.44bb0e23.chunk.js.map",
+    "main.css": "/weatherapp/static/css/main.64564d68.chunk.css",
+    "main.js": "/weatherapp/static/js/main.c606c2f7.chunk.js",
+    "main.js.map": "/weatherapp/static/js/main.c606c2f7.chunk.js.map",
     "runtime-main.js": "/weatherapp/static/js/runtime-main.23a29212.js",
     "runtime-main.js.map": "/weatherapp/static/js/runtime-main.23a29212.js.map",
-    "static/js/2.efefa1b5.chunk.js": "/weatherapp/static/js/2.efefa1b5.chunk.js",
-    "static/js/2.efefa1b5.chunk.js.map": "/weatherapp/static/js/2.efefa1b5.chunk.js.map",
+    "static/js/2.68b9723d.chunk.js": "/weatherapp/static/js/2.68b9723d.chunk.js",
+    "static/js/2.68b9723d.chunk.js.map": "/weatherapp/static/js/2.68b9723d.chunk.js.map",
     "index.html": "/weatherapp/index.html",
-    "precache-manifest.26d69b3942e828b329a7b11e58910eb2.js": "/weatherapp/precache-manifest.26d69b3942e828b329a7b11e58910eb2.js",
+    "precache-manifest.48245582b9a344ccf3354e5fab4eb53e.js": "/weatherapp/precache-manifest.48245582b9a344ccf3354e5fab4eb53e.js",
     "service-worker.js": "/weatherapp/service-worker.js",
-    "static/css/main.5709b125.chunk.css.map": "/weatherapp/static/css/main.5709b125.chunk.css.map",
-    "static/js/2.efefa1b5.chunk.js.LICENSE.txt": "/weatherapp/static/js/2.efefa1b5.chunk.js.LICENSE.txt",
-    "static/media/Result.scss": "/weatherapp/static/media/greenVillage.f2d72682.jpg"
+    "static/css/main.64564d68.chunk.css.map": "/weatherapp/static/css/main.64564d68.chunk.css.map",
+    "static/js/2.68b9723d.chunk.js.LICENSE.txt": "/weatherapp/static/js/2.68b9723d.chunk.js.LICENSE.txt",
+    "static/media/greenVillage.jpg": "/weatherapp/static/media/greenVillage.f2d72682.jpg",
+    "static/media/rain.jpg": "/weatherapp/static/media/rain.0e54c1a2.jpg",
+    "static/media/summer.jpg": "/weatherapp/static/media/summer.41cb5f87.jpg",
+    "static/media/thunder.jpg": "/weatherapp/static/media/thunder.c416d247.jpg",
+    "static/media/winter.jpg": "/weatherapp/static/media/winter.ff7c4633.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.23a29212.js",
-    "static/js/2.efefa1b5.chunk.js",
-    "static/css/main.5709b125.chunk.css",
-    "static/js/main.44bb0e23.chunk.js"
+    "static/js/2.68b9723d.chunk.js",
+    "static/css/main.64564d68.chunk.css",
+    "static/js/main.c606c2f7.chunk.js"
   ]
 }
