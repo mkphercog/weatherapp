@@ -45,10 +45,10 @@ const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
     photoResult = summer;
   }
 
-  if (weather[0].description.includes("deszcz")) {
+  if (weather[0].icon.includes("09") || weather[0].icon.includes("10")) {
     photoResult = rain;
   }
-  if (weather[0].description.includes("burz")) {
+  if (weather[0].icon.includes("11")) {
     photoResult = thunder;
   }
 
