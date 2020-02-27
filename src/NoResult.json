@@ -13,7 +13,7 @@
   ],
   "base": "Brak danych",
   "main": {
-    "temp": 0,
+    "temp": 10,
     "feels_like": 0,
     "temp_min": 0,
     "temp_max": 0,

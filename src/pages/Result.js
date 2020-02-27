@@ -35,7 +35,7 @@ const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
     }
   };
 
-  let photoResult;
+  let photoResult = greenVillage;
 
   if (temp <= 0) {
     photoResult = winter;
