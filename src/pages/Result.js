@@ -1,6 +1,11 @@
 import React from "react";
 import BtnRefreshData from "../components/BtnRefreshData";
 import BtnShowSettings from "../components/BtnShowSettings";
+import greenVillage from "../images/greenVillage.jpg";
+import rain from "../images/rain.jpg";
+import summer from "../images/summer.jpg";
+import thunder from "../images/thunder.jpg";
+import winter from "../images/winter.jpg";
 import "../styles/Result.scss";
 
 const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
@@ -30,8 +35,30 @@ const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
     }
   };
 
+  let photoResult;
+
+  if (temp <= 0) {
+    photoResult = winter;
+  } else if (temp > 0 && temp <= 20) {
+    photoResult = greenVillage;
+  } else if (temp > 20) {
+    photoResult = summer;
+  }
+
+  if (weather[0].description.includes("deszcz")) {
+    photoResult = rain;
+  }
+  if (weather[0].description.includes("burz")) {
+    photoResult = thunder;
+  }
+
   return (
-    <div className="result">
+    <div
+      className="result"
+      style={{
+        backgroundImage: `url("${photoResult}")`
+      }}
+    >
       <div className="result__wrapper" id="result__wrapper">
         <h1 className="result__townName">{name}</h1>
 
