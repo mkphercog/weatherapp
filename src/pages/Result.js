@@ -37,11 +37,11 @@ const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
 
   let photoResult = greenVillage;
 
-  if (temp <= 0) {
+  if (tempShow <= 0 || weather[0].icon.includes("13")) {
     photoResult = winter;
-  } else if (temp > 0 && temp <= 20) {
+  } else if (tempShow > 0 && tempShow <= 20) {
     photoResult = greenVillage;
-  } else if (temp > 20) {
+  } else if (tempShow > 20) {
     photoResult = summer;
   }
 
