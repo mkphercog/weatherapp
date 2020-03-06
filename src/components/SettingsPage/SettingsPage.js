@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import SettingsInput from "../components/SettingsInput";
-import BtnAddTown from "../components/BtnAddTown";
-import CheckBoxes from "../components/CheckBoxes";
-import FavouriteTownList from "../components/FavouriteTownList";
-import CloseSettings from "../components/CloseSettings";
-import "../styles/Settings.scss";
+import SettingsInput from "../SettingsInput/SettingsInput";
+import BtnAddTown from "../BtnAddTown/BtnAddTown";
+import CheckBoxes from "../CheckBoxes/CheckBoxes";
+import FavouriteTownList from "../FavouriteTownList/FavouriteTownList";
+import CloseSettings from "../CloseSettings/CloseSettings";
+import "./SettingsPage.scss";
 
 const Settings = ({
   valueInput,

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Result from "./pages/Result";
-import Settings from "./pages/Settings";
-import ErrorPage from "./pages/ErrorPage";
+import Result from "./components/ResultPage/ResultPage";
+import Settings from "./components/SettingsPage/SettingsPage";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
 import NoResult from "./NoResult.json";
-import "./styles/App.scss";
+import "./App.scss";
 
 //WEBSITE: https://api.openweathermap.org/data/2.5/weather?q=${townName}&APPID=${APIKey}&lang=pl&units=metric
 const APIKey = "0d90c0d99506c2d578ef4a5f8468ce4f";

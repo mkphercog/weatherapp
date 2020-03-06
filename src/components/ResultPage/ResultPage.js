@@ -1,12 +1,12 @@
 import React from "react";
-import BtnRefreshData from "../components/BtnRefreshData";
-import BtnShowSettings from "../components/BtnShowSettings";
-import greenVillage from "../images/greenVillage.jpg";
-import rain from "../images/rain.jpg";
-import summer from "../images/summer.jpg";
-import thunder from "../images/thunder.jpg";
-import winter from "../images/winter.jpg";
-import "../styles/Result.scss";
+import BtnRefreshData from "../BtnRefreshData/BtnRefreshData";
+import BtnShowSettings from "../BtnShowSettings/BtnShowSettings";
+import greenVillage from "../../images/greenVillage.jpg";
+import rain from "../../images/rain.jpg";
+import summer from "../../images/summer.jpg";
+import thunder from "../../images/thunder.jpg";
+import winter from "../../images/winter.jpg";
+import "./ResultPage.scss";
 
 const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
   const { main, name, weather, wind, sys } = weatherData;
