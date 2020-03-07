@@ -20,6 +20,7 @@ const scrollUp = () => {
 export const Result = ({ clickRefreshBtn, showSettings }) => {
   const dateOfData = useSelector(state => state.fetchData.dateOfData);
   const dataOfTown = useSelector(state => state.fetchData.townData);
+  const mainTown = useSelector(state => state.townList.mainTown);
 
   const { main, name, weather, wind, sys } = dataOfTown;
   const { temp, feels_like, temp_min, temp_max, pressure, humidity } = main;
@@ -112,9 +113,14 @@ export const Result = ({ clickRefreshBtn, showSettings }) => {
           />
           <BtnShowSettings scrollUp={scrollUp} showSettings={showSettings} />
         </div>
-
         <p className="result__dateOfRefresh">
           Dane z: {dateOfData ? dateOfData : "Brak danych"}
+        </p>
+        <p className="result__mainTown">
+          Główne miasto:{" "}
+          <span className="result__info">
+            {mainTown ? mainTown : "Brak danych"}
+          </span>
         </p>
       </div>
     </div>

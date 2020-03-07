@@ -1,5 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setMainTown } from "../../store/actions/townsListActions";
+import { fetchData } from "../../store/actions/fetchDataAction";
 
 const FavouriteTownList = ({
   setMainTownBtn,
@@ -7,6 +9,7 @@ const FavouriteTownList = ({
   checkWeatherHere
 }) => {
   const townList = useSelector(state => state.townList.towns);
+  const dispatch = useDispatch();
 
   const arrOfTowns = townList.map((town, index) => (
     <li className="settings__listItem" key={index}>
@@ -26,14 +29,15 @@ const FavouriteTownList = ({
         {localStorage.getItem("townName") === town ? null : (
           <button
             className="settings__btn"
-            onClick={() => setMainTownBtn(town)}
+            // onClick={() => setMainTownBtn(town)}
+            onClick={() => dispatch(setMainTown(town))}
           >
             Główne miasto
           </button>
         )}
         <button
           className="settings__btn"
-          onClick={() => checkWeatherHere(town)}
+          onClick={() => dispatch(fetchData(town))}
         >
           Sprawdź pogodę
         </button>
