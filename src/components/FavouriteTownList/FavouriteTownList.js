@@ -1,12 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const FavouriteTownList = ({
-  favouriteTowns,
   setMainTownBtn,
   deleteTownFromList,
   checkWeatherHere
 }) => {
-  const arrOfTowns = favouriteTowns.map((town, index) => (
+  const townList = useSelector(state => state.townList.towns);
+
+  const arrOfTowns = townList.map((town, index) => (
     <li className="settings__listItem" key={index}>
       <div className="settings__wrapperIconName">
         {localStorage.getItem("townName") === town ? (

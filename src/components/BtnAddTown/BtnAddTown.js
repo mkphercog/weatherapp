@@ -1,8 +1,27 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchData } from "../../store/actions/fetchDataAction";
+import { settingsInputContent } from "../../store/actions/settingsInputContentAction";
 
 const BtnAddTown = ({ clickAddBtn }) => {
+  const inputValue = useSelector(state => state.settingsInputContent.value);
+  const dispatch = useDispatch();
+
   return (
-    <button className="settings__btn" onClick={clickAddBtn}>
+    <button
+      className="settings__btn"
+      onClick={() => {
+        if (inputValue === "") {
+          // setErr(true);
+          // setErrorMessage("Wpisz nazwę miasta!");
+          // setTimeout(() => setErr(false), 2000);
+        } else {
+          inputValue.trim();
+          dispatch(fetchData(inputValue));
+          dispatch(settingsInputContent(""));
+        }
+      }}
+    >
       Sprawdź pogodę
     </button>
   );

@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
 import BtnRefreshData from "../BtnRefreshData/BtnRefreshData";
 import BtnShowSettings from "../BtnShowSettings/BtnShowSettings";
 import greenVillage from "../../images/greenVillage.jpg";
@@ -8,8 +10,18 @@ import thunder from "../../images/thunder.jpg";
 import winter from "../../images/winter.jpg";
 import "./ResultPage.scss";
 
-const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
-  const { main, name, weather, wind, sys } = weatherData;
+const scrollUp = () => {
+  if (document.getElementById("result__wrapper").scrollTop > 0) {
+    document.getElementById("result__wrapper").scrollTop -= 5;
+    setTimeout(scrollUp, 5);
+  }
+};
+
+export const Result = ({ clickRefreshBtn, showSettings }) => {
+  const dateOfData = useSelector(state => state.fetchData.dateOfData);
+  const dataOfTown = useSelector(state => state.fetchData.townData);
+
+  const { main, name, weather, wind, sys } = dataOfTown;
   const { temp, feels_like, temp_min, temp_max, pressure, humidity } = main;
   const { sunrise, sunset } = sys;
 
@@ -27,13 +39,6 @@ const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
     temp_min < 0 && temp_min >= -0.49 ? 0 : temp_min.toFixed();
   const maxTempShow =
     temp_max < 0 && temp_max >= -0.49 ? 0 : temp_max.toFixed();
-
-  const scrollUp = () => {
-    if (document.getElementById("result__wrapper").scrollTop > 0) {
-      document.getElementById("result__wrapper").scrollTop -= 5;
-      setTimeout(scrollUp, 5);
-    }
-  };
 
   let photoResult = greenVillage;
 
@@ -109,11 +114,9 @@ const Result = ({ weatherData, clickRefreshBtn, time, showSettings }) => {
         </div>
 
         <p className="result__dateOfRefresh">
-          Dane z: {time ? time : "Brak danych"}
+          Dane z: {dateOfData ? dateOfData : "Brak danych"}
         </p>
       </div>
     </div>
   );
 };
-
-export default Result;

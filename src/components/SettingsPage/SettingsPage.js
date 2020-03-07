@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+
 import SettingsInput from "../SettingsInput/SettingsInput";
 import BtnAddTown from "../BtnAddTown/BtnAddTown";
 import CheckBoxes from "../CheckBoxes/CheckBoxes";
@@ -21,6 +23,7 @@ const Settings = ({
   settingsVisible,
   showSettings
 }) => {
+  const townList = useSelector(state => state.townList.towns);
   const [visible, setVisible] = useState(0);
   const animationSpeed = 10;
 
@@ -70,9 +73,9 @@ const Settings = ({
         <div className="settings__wrapperFavouriteList">
           <h3 className="settings__favouriteTitle">Lista ulubionych miast</h3>
           <ul className="settings__favouriteList">
-            {favouriteTowns.length ? (
+            {townList.length ? (
               <FavouriteTownList
-                favouriteTowns={favouriteTowns}
+                townList={townList}
                 setMainTownBtn={setMainTownBtn}
                 deleteTownFromList={deleteTownFromList}
                 checkWeatherHere={checkWeatherHere}
