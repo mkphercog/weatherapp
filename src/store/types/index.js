@@ -1,0 +1,7 @@
+export const DATA_FETCHING = "DATA_FETCHING";
+export const DATA_FETCHED = "DATA_FETCHED";
+export const DATA_ERROR = "DATA_ERROR";
+
+export const ADD_TOWN_TO_LIST = "ADD_TOWN_TO_LIST";
+export const ADD_TO_LOCAL_STORAGE = "ADD_TO_LOCAL_STORAGE";
+export const CHANGE_MAIN_TOWN = "CHANGE_MAIN_TOWN";
