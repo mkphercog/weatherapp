@@ -1,43 +1,60 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setMainTown } from "../../store/actions/townsListActions";
+import {
+  setMainTown,
+  deleteTownFromList
+} from "../../store/actions/townsListActions";
 import { fetchData } from "../../store/actions/fetchDataAction";
+import {
+  SetLocalMainTown,
+  SetLocalListOfTowns
+} from "../../store/actions/localStorageActions";
+import { hideSettings } from "../../store/actions/settingsVisibleActions";
 
-const FavouriteTownList = ({
-  setMainTownBtn,
-  deleteTownFromList,
-  checkWeatherHere
-}) => {
+const FavouriteTownList = ({ setMainTownBtn, checkWeatherHere }) => {
   const townList = useSelector(state => state.townList.towns);
+  const mainTownRedux = useSelector(state => state.townList.mainTown);
   const dispatch = useDispatch();
-
+  SetLocalListOfTowns(townList);
   const arrOfTowns = townList.map((town, index) => (
     <li className="settings__listItem" key={index}>
       <div className="settings__wrapperIconName">
-        {localStorage.getItem("townName") === town ? (
+        {mainTownRedux === town ? (
           <i className="fas fa-home settings__homeIcon"></i>
         ) : (
           <i className="fas fa-home settings__homeIcon settings__homeIcon--disabled"></i>
         )}
         <span className="settings__townName">{town}</span>
         <i
-          onClick={() => deleteTownFromList(town)}
+          onClick={() => {
+            dispatch(deleteTownFromList(town));
+            if (town === mainTownRedux) {
+              dispatch(setMainTown(""));
+              SetLocalMainTown("");
+            }
+            SetLocalListOfTowns([]);
+          }}
           className="fas fa-trash-alt settings__trashIcon"
         ></i>
       </div>
       <div className="settings__wrapperBtn">
-        {localStorage.getItem("townName") === town ? null : (
+        {mainTownRedux === town ? null : (
           <button
             className="settings__btn"
-            // onClick={() => setMainTownBtn(town)}
-            onClick={() => dispatch(setMainTown(town))}
+            onClick={() => {
+              dispatch(setMainTown(town));
+              SetLocalMainTown(town);
+            }}
           >
             Główne miasto
           </button>
         )}
         <button
           className="settings__btn"
-          onClick={() => dispatch(fetchData(town))}
+          onClick={() => {
+            dispatch(fetchData(town));
+            dispatch(hideSettings());
+          }}
         >
           Sprawdź pogodę
         </button>

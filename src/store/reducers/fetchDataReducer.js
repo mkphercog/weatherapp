@@ -1,5 +1,8 @@
 import { DATA_FETCHING, DATA_FETCHED, DATA_ERROR } from "../types";
 import NoResult from "../../NoResult.json";
+// import { GetLocalData } from "../actions/localStorageActions";
+
+// const localData = GetLocalData();
 
 const INITIAL_STATE = {
   featching: false,

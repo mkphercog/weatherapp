@@ -43,7 +43,7 @@
 
       .settings__btn {
         width: 60%;
-        margin: 0 auto;
+        margin: 10px auto;
         padding: 5px;
         font-size: 18px;
         text-transform: uppercase;
@@ -62,6 +62,13 @@
         @media (min-width: 1024px) {
           cursor: pointer;
         }
+        span {
+          color: goldenrod;
+        }
+      }
+
+      .settings__btn--disabled {
+        opacity: 0.2;
       }
 
       .settings__checkLabel {

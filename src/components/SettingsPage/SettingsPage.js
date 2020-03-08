@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 
 import SettingsInput from "../SettingsInput/SettingsInput";
 import BtnAddTown from "../BtnAddTown/BtnAddTown";
-import CheckBoxes from "../CheckBoxes/CheckBoxes";
 import FavouriteTownList from "../FavouriteTownList/FavouriteTownList";
 import CloseSettings from "../CloseSettings/CloseSettings";
+import { BtnAddToList } from "../BtnAddToList/BtnAddToList";
 import "./SettingsPage.scss";
 
 const Settings = ({
@@ -24,6 +24,7 @@ const Settings = ({
   showSettings
 }) => {
   const townList = useSelector(state => state.townList.towns);
+  const isVisible = useSelector(state => state.settingsVisible.isVisible);
   const [visible, setVisible] = useState(0);
   const animationSpeed = 10;
 
@@ -38,12 +39,12 @@ const Settings = ({
     }
   };
 
-  if (settingsVisible && visible < 100) {
+  if (isVisible && visible < 100) {
     scrollUp();
     setTimeout(() => settingsAnimation(5), animationSpeed);
   }
 
-  if (!settingsVisible && visible > 0) {
+  if (!isVisible && visible > 0) {
     setTimeout(() => settingsAnimation(-5), animationSpeed);
   }
 
@@ -62,12 +63,7 @@ const Settings = ({
         <div className="settings__wrapperAddTown">
           <SettingsInput valueInput={valueInput} changeInput={changeInput} />
           <BtnAddTown clickAddBtn={clickAddBtn} />
-          <CheckBoxes
-            isMainTown={isMainTown}
-            checkIsMainTown={checkIsMainTown}
-            isFavourite={isFavourite}
-            checkIsFavourite={checkIsFavourite}
-          />
+          <BtnAddToList />
         </div>
 
         <div className="settings__wrapperFavouriteList">

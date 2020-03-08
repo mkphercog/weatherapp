@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchData } from "../../store/actions/fetchDataAction";
 import { settingsInputContent } from "../../store/actions/settingsInputContentAction";
 
-const BtnAddTown = ({ clickAddBtn }) => {
+const BtnAddTown = () => {
   const inputValue = useSelector(state => state.settingsInputContent.value);
   const dispatch = useDispatch();
 
@@ -22,7 +22,7 @@ const BtnAddTown = ({ clickAddBtn }) => {
         }
       }}
     >
-      Sprawdź pogodę
+      Sprawdź miasto
     </button>
   );
 };

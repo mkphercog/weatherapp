@@ -1,10 +1,13 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { hideSettings } from "../../store/actions/settingsVisibleActions";
 
 const CloseSettings = ({ showSettings }) => {
+  const dispatch = useDispatch();
   return (
     <i
       className="fas fa-times settings__close"
-      onClick={() => showSettings(false)}
+      onClick={() => dispatch(hideSettings())}
     ></i>
   );
 };
