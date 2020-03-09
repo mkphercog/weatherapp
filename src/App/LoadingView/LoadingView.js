@@ -1,7 +1,7 @@
 import React from "react";
-import "./LoadingPage.scss";
+import "./LoadingView.scss";
 
-const LoadingPage = () => {
+export const LoadingView = () => {
   return (
     <div className="loadingPage">
       <i className="fas fa-sync-alt loadingPage__icon"></i>
@@ -9,5 +9,3 @@ const LoadingPage = () => {
     </div>
   );
 };
-
-export default LoadingPage;

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { SetLocalListOfTowns } from "../../store/actions/localStorageActions";
-import { addTownToList } from "../../store/actions/townsListActions";
+import { SetLocalListOfTowns } from "../../../store/actions/localStorageActions";
+import { addTownToList } from "../../../store/actions/townsListActions";
 
 export const BtnAddToList = () => {
   const currentTown = useSelector(state => state.fetchData.townData.name);

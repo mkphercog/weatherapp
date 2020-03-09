@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { SettingsInput } from "./SettingsInput/SettingsInput";
+import { BtnAddTown } from "./BtnAddTown/BtnAddTown";
+import { FavouriteTownList } from "./FavouriteTownList/FavouriteTownList";
+import { CloseSettings } from "./CloseSettings/CloseSettings";
+import { BtnAddToList } from "./BtnAddToList/BtnAddToList";
+import "./SettingsView.scss";
 
-import SettingsInput from "../SettingsInput/SettingsInput";
-import BtnAddTown from "../BtnAddTown/BtnAddTown";
-import FavouriteTownList from "../FavouriteTownList/FavouriteTownList";
-import CloseSettings from "../CloseSettings/CloseSettings";
-import { BtnAddToList } from "../BtnAddToList/BtnAddToList";
-import "./SettingsPage.scss";
-
-const Settings = ({
+export const SettingsView = ({
   valueInput,
   changeInput,
   clickAddBtn,
@@ -82,5 +81,3 @@ const Settings = ({
     </div>
   );
 };
-
-export default Settings;

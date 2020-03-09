@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { showSettings } from "../../store/actions/settingsVisibleActions";
+import { showSettings } from "../../../store/actions/settingsVisibleActions";
 
-const BtnShowSettings = ({ scrollUp }) => {
+export const BtnShowSettings = ({ scrollUp }) => {
   const dispatch = useDispatch();
   return (
     <i
@@ -14,5 +14,3 @@ const BtnShowSettings = ({ scrollUp }) => {
     ></i>
   );
 };
-
-export default BtnShowSettings;

@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../../store/actions/fetchDataAction";
+import { fetchData } from "../../../store/actions/fetchDataAction";
 
-const BtnRefreshData = ({ scrollUp }) => {
+export const BtnRefreshData = ({ scrollUp }) => {
   const mainTown = useSelector(state => state.townList.mainTown);
   const dispatch = useDispatch();
   return (
@@ -15,5 +15,3 @@ const BtnRefreshData = ({ scrollUp }) => {
     ></i>
   );
 };
-
-export default BtnRefreshData;

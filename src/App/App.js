@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Result } from "./components/ResultPage/ResultPage";
-import Settings from "./components/SettingsPage/SettingsPage";
-import ErrorPage from "./components/ErrorPage/ErrorPage";
+import { ResultView } from "./ResultView/ResultView";
+import { SettingsView } from "./SettingsView/SettingsView";
+import { ErrorView } from "./ErrorView/ErrorView";
 import "./App.scss";
-import { fetchData } from "./store/actions/fetchDataAction";
+import { fetchData } from "../store/actions/fetchDataAction";
 import {
   SetLocalMainTown,
   SetLocalListOfTowns
-} from "./store/actions/localStorageActions";
-import LoadingPage from "./components/LoadingPage/LoadingPage";
-import { hideSettings } from "./store/actions/settingsVisibleActions";
-import { setMainTown, defaultState } from "./store/actions/townsListActions";
+} from "../store/actions/localStorageActions";
+import { LoadingView } from "./LoadingView/LoadingView";
+import { hideSettings } from "../store/actions/settingsVisibleActions";
+import { setMainTown, defaultState } from "../store/actions/townsListActions";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,10 +48,10 @@ function App() {
 
   return (
     <div className="app">
-      <Result />
-      <Settings />
-      {isFeatching ? <LoadingPage /> : null}
-      {isError ? <ErrorPage /> : null}
+      <ResultView />
+      <SettingsView />
+      {isFeatching ? <LoadingView /> : null}
+      {isError ? <ErrorView /> : null}
     </div>
   );
 }

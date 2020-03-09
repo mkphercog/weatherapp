@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { settingsInputContent } from "../../store/actions/settingsInputContentAction";
+import { settingsInputContent } from "../../../store/actions/settingsInputContentAction";
 
-const SettingsInput = () => {
+export const SettingsInput = () => {
   const value = useSelector(state => state.settingsInputContent.value);
   const isEmpty = useSelector(state => state.settingsInputContent.isEmpty);
   const dispatch = useDispatch();
@@ -20,5 +20,3 @@ const SettingsInput = () => {
     />
   );
 };
-
-export default SettingsInput;

@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchData } from "../../store/actions/fetchDataAction";
+import { fetchData } from "../../../store/actions/fetchDataAction";
 import {
   settingsInputContent,
   settingsInputEmpty
-} from "../../store/actions/settingsInputContentAction";
+} from "../../../store/actions/settingsInputContentAction";
 
-const BtnAddTown = () => {
+export const BtnAddTown = () => {
   const inputValue = useSelector(state => state.settingsInputContent.value);
   const dispatch = useDispatch();
 
@@ -28,5 +28,3 @@ const BtnAddTown = () => {
     </button>
   );
 };
-
-export default BtnAddTown;

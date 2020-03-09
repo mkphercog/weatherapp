@@ -1,14 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import BtnRefreshData from "../BtnRefreshData/BtnRefreshData";
-import BtnShowSettings from "../BtnShowSettings/BtnShowSettings";
+import { BtnRefreshData } from "./BtnRefreshData/BtnRefreshData";
+import { BtnShowSettings } from "./BtnShowSettings/BtnShowSettings";
 import greenVillage from "../../images/greenVillage.jpg";
 import rain from "../../images/rain.jpg";
 import summer from "../../images/summer.jpg";
 import thunder from "../../images/thunder.jpg";
 import winter from "../../images/winter.jpg";
-import "./ResultPage.scss";
+import "./ResultView.scss";
 
 const scrollUp = () => {
   if (document.getElementById("result__wrapper").scrollTop > 0) {
@@ -17,7 +17,7 @@ const scrollUp = () => {
   }
 };
 
-export const Result = ({ clickRefreshBtn, showSettings }) => {
+export const ResultView = ({ clickRefreshBtn, showSettings }) => {
   const dateOfData = useSelector(state => state.fetchData.dateOfData);
   const dataOfTown = useSelector(state => state.fetchData.townData);
   const mainTown = useSelector(state => state.townList.mainTown);

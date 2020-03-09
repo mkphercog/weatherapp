@@ -3,15 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   setMainTown,
   deleteTownFromList
-} from "../../store/actions/townsListActions";
-import { fetchData } from "../../store/actions/fetchDataAction";
+} from "../../../store/actions/townsListActions";
+import { fetchData } from "../../../store/actions/fetchDataAction";
 import {
   SetLocalMainTown,
   SetLocalListOfTowns
-} from "../../store/actions/localStorageActions";
-import { hideSettings } from "../../store/actions/settingsVisibleActions";
+} from "../../../store/actions/localStorageActions";
+import { hideSettings } from "../../../store/actions/settingsVisibleActions";
 
-const FavouriteTownList = ({ setMainTownBtn, checkWeatherHere }) => {
+export const FavouriteTownList = () => {
   const townList = useSelector(state => state.townList.towns);
   const mainTownRedux = useSelector(state => state.townList.mainTown);
   const dispatch = useDispatch();
@@ -73,5 +73,3 @@ const FavouriteTownList = ({ setMainTownBtn, checkWeatherHere }) => {
 
   return showTowns;
 };
-
-export default FavouriteTownList;

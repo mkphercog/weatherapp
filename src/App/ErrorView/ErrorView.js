@@ -1,8 +1,8 @@
 import React from "react";
-import "./ErrorPage.scss";
+import "./ErrorView.scss";
 import { useSelector } from "react-redux";
 
-const ErrorPage = () => {
+export const ErrorView = () => {
   const errorMessage = useSelector(state => state.fetchData.errorMessage);
 
   return (
@@ -11,5 +11,3 @@ const ErrorPage = () => {
     </div>
   );
 };
-
-export default ErrorPage;

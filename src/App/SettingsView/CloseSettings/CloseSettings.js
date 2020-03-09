@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { hideSettings } from "../../store/actions/settingsVisibleActions";
+import { hideSettings } from "../../../store/actions/settingsVisibleActions";
 
-const CloseSettings = () => {
+export const CloseSettings = () => {
   const dispatch = useDispatch();
   return (
     <i
@@ -11,5 +11,3 @@ const CloseSettings = () => {
     ></i>
   );
 };
-
-export default CloseSettings;
