@@ -10,8 +10,8 @@ export const BtnShowSettings = () => {
   return (
     <i
       onClick={() => {
-        resultScrollUp();
         dispatch(showSettings());
+        resultScrollUp();
       }}
       className="fas fa-cogs resultView__settingsIcon"
     ></i>
