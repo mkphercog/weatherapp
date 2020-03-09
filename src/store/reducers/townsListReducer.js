@@ -6,8 +6,11 @@ import {
 } from "../types";
 import {
   GetLocalMainTown,
-  GetLocalListOfTowns
+  GetLocalListOfTowns,
+  SetLocalMainTown
 } from "../actions/localStorageActions";
+
+const INITIAL_TOWN = "Warszawa";
 
 const INITIAL_STATE = {
   towns: GetLocalListOfTowns,
@@ -25,10 +28,11 @@ export const townListReducer = (state = INITIAL_STATE, action) => {
       const listWithoutTown = state.towns.filter(town => town !== action.town);
       return { ...state, towns: listWithoutTown };
     case DEFAULT_TOWN_STATE:
+      SetLocalMainTown(INITIAL_TOWN);
       return {
         ...state,
-        towns: ["Warszawa"],
-        mainTown: "Warszawa"
+        towns: [INITIAL_TOWN],
+        mainTown: INITIAL_TOWN
       };
     case SET_MAIN_TOWN:
       return {

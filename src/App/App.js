@@ -3,17 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { ResultView } from "./ResultView/ResultView";
 import { SettingsView } from "./SettingsView/SettingsView";
 import { ErrorView } from "./ErrorView/ErrorView";
-import "./App.scss";
-import { fetchData } from "../store/actions/fetchDataAction";
-import {
-  SetLocalMainTown,
-  SetLocalListOfTowns
-} from "../store/actions/localStorageActions";
 import { LoadingView } from "./LoadingView/LoadingView";
+import { fetchData } from "../store/actions/fetchDataAction";
+import { SetLocalMainTown } from "../store/actions/localStorageActions";
 import { hideSettings } from "../store/actions/settingsVisibleActions";
 import { setMainTown, defaultState } from "../store/actions/townsListActions";
+import "./App.scss";
 
-function App() {
+export const App = () => {
   const dispatch = useDispatch();
   const mainTown = useSelector(state => state.townList.mainTown);
   const townsList = useSelector(state => state.townList.towns);
@@ -22,28 +19,29 @@ function App() {
 
   useEffect(() => {
     SetLocalMainTown(mainTown);
-    SetLocalListOfTowns(townsList);
     dispatch(fetchData(mainTown));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const errFetch = () => {
+  const fetchErrorResult = () => {
     if (mainTown) {
+      //error but you still have main Town, so just refresh data of main town
       dispatch(fetchData(mainTown));
       dispatch(hideSettings());
     } else if (townsList.length > 0) {
+      //error and you don't have main town, but you have list of favourite towns, so your main town will be random from list
       const randomIndex = Math.floor(Math.random() * townsList.length);
       SetLocalMainTown(townsList[randomIndex]);
       dispatch(setMainTown(townsList[randomIndex]));
     } else {
+      //error and you don't have main town and your list is empty, so return default state of app, with "Warszawa" in main town
       localStorage.clear();
       dispatch(defaultState());
-      SetLocalMainTown(mainTown);
     }
   };
 
   if (isError) {
-    setTimeout(errFetch, 1500);
+    setTimeout(fetchErrorResult, 1500);
   }
 
   return (
@@ -54,6 +52,4 @@ function App() {
       {isError ? <ErrorView /> : null}
     </div>
   );
-}
-
-export default App;
+};
