@@ -21,12 +21,13 @@ export const fetchData = townName => {
             dateOfData: `${date}, ${time}`
           });
         }
+        return res.status;
       })
-      .catch(err =>
+      .catch(err => {
         dispatch({
           type: DATA_ERROR,
-          payload: err.message
-        })
-      );
+          payload: err.response.data.message
+        });
+      });
   };
 };

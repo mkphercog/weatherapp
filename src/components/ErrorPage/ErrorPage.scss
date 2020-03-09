@@ -8,12 +8,26 @@
   height: 100vh;
   background-color: rgba(100, 0, 0, 0.7);
   align-items: center;
+  animation: showError 2s both;
+
+  @keyframes showError {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 
   .errorPage__message {
     margin: 20px;
     text-align: center;
     font-size: 40px;
     color: white;
+    text-transform: uppercase;
 
     @media (min-width: 768px) {
       font-size: 55px;

@@ -1,7 +1,10 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchData } from "../../store/actions/fetchDataAction";
-import { settingsInputContent } from "../../store/actions/settingsInputContentAction";
+import {
+  settingsInputContent,
+  settingsInputEmpty
+} from "../../store/actions/settingsInputContentAction";
 
 const BtnAddTown = () => {
   const inputValue = useSelector(state => state.settingsInputContent.value);
@@ -12,9 +15,8 @@ const BtnAddTown = () => {
       className="settings__btn"
       onClick={() => {
         if (inputValue === "") {
-          // setErr(true);
-          // setErrorMessage("Wpisz nazwę miasta!");
-          // setTimeout(() => setErr(false), 2000);
+          dispatch(settingsInputEmpty(true));
+          setTimeout(() => dispatch(settingsInputEmpty(false)), 2000);
         } else {
           inputValue.trim();
           dispatch(fetchData(inputValue));

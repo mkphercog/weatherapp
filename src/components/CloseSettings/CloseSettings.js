@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { hideSettings } from "../../store/actions/settingsVisibleActions";
 
-const CloseSettings = ({ showSettings }) => {
+const CloseSettings = () => {
   const dispatch = useDispatch();
   return (
     <i

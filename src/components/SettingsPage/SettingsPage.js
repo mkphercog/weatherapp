@@ -12,15 +12,9 @@ const Settings = ({
   valueInput,
   changeInput,
   clickAddBtn,
-  isMainTown,
-  checkIsMainTown,
-  isFavourite,
-  checkIsFavourite,
-  favouriteTowns,
   setMainTownBtn,
   deleteTownFromList,
   checkWeatherHere,
-  settingsVisible,
   showSettings
 }) => {
   const townList = useSelector(state => state.townList.towns);
