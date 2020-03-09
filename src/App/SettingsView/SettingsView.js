@@ -5,6 +5,7 @@ import { BtnAddTown } from "./BtnAddTown/BtnAddTown";
 import { FavouriteTownList } from "./FavouriteTownList/FavouriteTownList";
 import { CloseSettings } from "./CloseSettings/CloseSettings";
 import { BtnAddToList } from "./BtnAddToList/BtnAddToList";
+import { settingsScrollUp } from "../../store/actions/scrollsUp";
 import "./SettingsView.scss";
 
 export const SettingsView = ({
@@ -25,19 +26,12 @@ export const SettingsView = ({
     setVisible(visible + num);
   };
 
-  const scrollUp = () => {
-    if (document.getElementById("settings").scrollTop > 0) {
-      document.getElementById("settings").scrollTop -= 5;
-      setTimeout(scrollUp, 10);
-    }
-  };
-
   if (isVisible && visible < 100) {
-    scrollUp();
     setTimeout(() => settingsAnimation(5), animationSpeed);
   }
 
   if (!isVisible && visible > 0) {
+    settingsScrollUp();
     setTimeout(() => settingsAnimation(-5), animationSpeed);
   }
 

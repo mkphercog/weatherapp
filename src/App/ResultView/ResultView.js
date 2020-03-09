@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-
 import { BtnRefreshData } from "./BtnRefreshData/BtnRefreshData";
 import { BtnShowSettings } from "./BtnShowSettings/BtnShowSettings";
 import greenVillage from "../../images/greenVillage.jpg";
@@ -9,13 +8,6 @@ import summer from "../../images/summer.jpg";
 import thunder from "../../images/thunder.jpg";
 import winter from "../../images/winter.jpg";
 import "./ResultView.scss";
-
-const scrollUp = () => {
-  if (document.getElementById("result__wrapper").scrollTop > 0) {
-    document.getElementById("result__wrapper").scrollTop -= 5;
-    setTimeout(scrollUp, 5);
-  }
-};
 
 export const ResultView = ({ clickRefreshBtn, showSettings }) => {
   const dateOfData = useSelector(state => state.fetchData.dateOfData);
@@ -107,11 +99,8 @@ export const ResultView = ({ clickRefreshBtn, showSettings }) => {
         </div>
 
         <div className="result__wrapperIcons">
-          <BtnRefreshData
-            scrollUp={scrollUp}
-            clickRefreshBtn={clickRefreshBtn}
-          />
-          <BtnShowSettings scrollUp={scrollUp} showSettings={showSettings} />
+          <BtnRefreshData clickRefreshBtn={clickRefreshBtn} />
+          <BtnShowSettings showSettings={showSettings} />
         </div>
         <p className="result__dateOfRefresh">
           Dane z: {dateOfData ? dateOfData : "Brak danych"}
