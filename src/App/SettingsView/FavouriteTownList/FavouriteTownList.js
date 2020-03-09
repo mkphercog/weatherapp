@@ -17,14 +17,14 @@ export const FavouriteTownList = () => {
   const dispatch = useDispatch();
   SetLocalListOfTowns(townList);
   const arrOfTowns = townList.map((town, index) => (
-    <li className="settings__listItem" key={index}>
-      <div className="settings__wrapperIconName">
+    <li className="settingsView__listItem" key={index}>
+      <div className="settingsView__wrapperIconName">
         {mainTownRedux === town ? (
-          <i className="fas fa-home settings__homeIcon"></i>
+          <i className="fas fa-home settingsView__homeIcon"></i>
         ) : (
-          <i className="fas fa-home settings__homeIcon settings__homeIcon--disabled"></i>
+          <i className="fas fa-home settingsView__homeIcon settingsView__homeIcon--disabled"></i>
         )}
-        <span className="settings__townName">{town}</span>
+        <span className="settingsView__townName">{town}</span>
         <i
           onClick={() => {
             dispatch(deleteTownFromList(town));
@@ -34,13 +34,13 @@ export const FavouriteTownList = () => {
             }
             SetLocalListOfTowns([]);
           }}
-          className="fas fa-trash-alt settings__trashIcon"
+          className="fas fa-trash-alt settingsView__trashIcon"
         ></i>
       </div>
-      <div className="settings__wrapperBtn">
+      <div className="settingsView__wrapperBtn">
         {mainTownRedux === town ? null : (
           <button
-            className="settings__btn"
+            className="settingsView__btn"
             onClick={() => {
               dispatch(setMainTown(town));
               SetLocalMainTown(town);
@@ -50,7 +50,7 @@ export const FavouriteTownList = () => {
           </button>
         )}
         <button
-          className="settings__btn"
+          className="settingsView__btn"
           onClick={() => {
             dispatch(fetchData(town));
             dispatch(hideSettings());
@@ -65,7 +65,7 @@ export const FavouriteTownList = () => {
   const mainTown = arrOfTowns.find(
     item =>
       item.props.children[0].props.children[0].props.className ===
-      "fas fa-home settings__homeIcon"
+      "fas fa-home settingsView__homeIcon"
   );
   const otherTowns = arrOfTowns.filter(item => item !== mainTown);
 

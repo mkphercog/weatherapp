@@ -37,25 +37,27 @@ export const SettingsView = ({
 
   return (
     <div
-      className="settings"
-      id="settings"
+      className="settingsView"
+      id="settingsView"
       style={{
         display: `${visible !== 0 ? "block" : "none"}`,
         opacity: `${visible}%`
       }}
     >
-      <div className="settings__wrapper">
-        <h1 className="settings__title">Ustawienia</h1>
+      <div className="settingsView__wrapper">
+        <h1 className="settingsView__title">Ustawienia</h1>
 
-        <div className="settings__wrapperAddTown">
+        <div className="settingsView__wrapperAddTown">
           <SettingsInput valueInput={valueInput} changeInput={changeInput} />
           <BtnAddTown clickAddBtn={clickAddBtn} />
           <BtnAddToList />
         </div>
 
-        <div className="settings__wrapperFavouriteList">
-          <h3 className="settings__favouriteTitle">Lista ulubionych miast</h3>
-          <ul className="settings__favouriteList">
+        <div className="settingsView__wrapperFavouriteList">
+          <h3 className="settingsView__favouriteTitle">
+            Lista ulubionych miast
+          </h3>
+          <ul className="settingsView__favouriteList">
             {townList.length ? (
               <FavouriteTownList
                 townList={townList}
@@ -64,13 +66,15 @@ export const SettingsView = ({
                 checkWeatherHere={checkWeatherHere}
               />
             ) : (
-              <li className="settings__listItem">Brak danych.</li>
+              <li className="settingsView__listItem">Brak danych.</li>
             )}
           </ul>
         </div>
         <CloseSettings showSettings={showSettings} />
 
-        <p className="settings__author">Projekt i realizacja: Marcin Hercog</p>
+        <p className="settingsView__author">
+          Projekt i realizacja: Marcin Hercog
+        </p>
       </div>
     </div>
   );

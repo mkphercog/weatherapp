@@ -15,8 +15,8 @@ export const BtnAddToList = () => {
 
   const classNames =
     isTownOnList || currentTown === "Brak danych"
-      ? "settings__btn settings__btn--disabled"
-      : "settings__btn";
+      ? "settingsView__btn settingsView__btn--disabled"
+      : "settingsView__btn";
   return (
     <button
       disabled={isTownOnList || currentTown === "Brak danych"}

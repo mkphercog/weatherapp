@@ -1,0 +1,22 @@
+.resultView__settingsIcon {
+  font-size: 35px;
+
+  @media (min-width: 411px) {
+    font-size: 40px;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 60px;
+  }
+
+  @media (min-width: 1024px) {
+    transition: 0.2s;
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 1024px) {
+  .resultView__settingsIcon:hover {
+    color: lightsteelblue;
+  }
+}

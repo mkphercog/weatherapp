@@ -6,7 +6,7 @@ export const CloseSettings = () => {
   const dispatch = useDispatch();
   return (
     <i
-      className="fas fa-times settings__close"
+      className="fas fa-times settingsView__close"
       onClick={() => dispatch(hideSettings())}
     ></i>
   );

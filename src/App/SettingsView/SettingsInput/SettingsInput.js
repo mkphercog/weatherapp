@@ -7,8 +7,8 @@ export const SettingsInput = () => {
   const isEmpty = useSelector(state => state.settingsInputContent.isEmpty);
   const dispatch = useDispatch();
   const classes = isEmpty
-    ? "settings__input settings__input--isEmpty"
-    : "settings__input";
+    ? "settingsView__input settingsView__input--isEmpty"
+    : "settingsView__input";
 
   return (
     <input

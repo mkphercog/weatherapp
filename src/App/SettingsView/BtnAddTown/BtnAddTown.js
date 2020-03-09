@@ -12,7 +12,7 @@ export const BtnAddTown = () => {
 
   return (
     <button
-      className="settings__btn"
+      className="settingsView__btn"
       onClick={() => {
         if (inputValue === "") {
           dispatch(settingsInputEmpty(true));

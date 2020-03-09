@@ -1,0 +1,30 @@
+.resultView__refreshIcon {
+  font-size: 35px;
+
+  @media (min-width: 411px) {
+    font-size: 40px;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 60px;
+  }
+
+  @media (min-width: 1020px) {
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 1024px) {
+  .resultView__refreshIcon:hover {
+    animation: rotate 0.5s linear both;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

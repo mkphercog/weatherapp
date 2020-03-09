@@ -1,11 +1,11 @@
-.result {
+.resultView {
   min-height: 100vh;
   padding: 5% 0;
   background-size: cover;
   background-repeat: repeat;
   background-position: center;
 
-  .result__wrapper {
+  .resultView__wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,7 +34,7 @@
       max-width: 35%;
     }
 
-    .result__townName {
+    .resultView__townName {
       margin-top: 10px;
       padding: 5px;
       font-size: 26px;
@@ -50,13 +50,13 @@
       }
     }
 
-    .result__wrapperTemp {
+    .resultView__wrapperTemp {
       display: flex;
       flex-direction: column;
       width: 100%;
       align-items: center;
 
-      .result__temp {
+      .resultView__temp {
         font-size: 33px;
 
         @media (min-width: 411px) {
@@ -68,7 +68,7 @@
         }
       }
 
-      .result__maxMinTemp {
+      .resultView__maxMinTemp {
         font-size: 16px;
 
         @media (min-width: 411px) {
@@ -81,7 +81,7 @@
       }
     }
 
-    .result__weatherIcon {
+    .resultView__weatherIcon {
       margin: 10px 0;
       width: 75px;
       background-color: rgba(255, 255, 255, 0.4);
@@ -96,14 +96,14 @@
       }
     }
 
-    .result__wrapperInfo {
+    .resultView__wrapperInfo {
       display: flex;
       flex-direction: column;
       justify-content: center;
       width: 100%;
       align-items: center;
 
-      .result__infoText {
+      .resultView__infoText {
         font-size: 16px;
 
         @media (min-width: 411px) {
@@ -114,74 +114,20 @@
           font-size: 23px;
         }
 
-        .result__info {
+        .resultView__info {
           font-weight: bold;
         }
       }
     }
 
-    .result__wrapperIcons {
+    .resultView__wrapperIcons {
       display: flex;
       justify-content: space-evenly;
       width: 100%;
       margin: 35px 0 5px;
-
-      .result__refreshIcon {
-        font-size: 35px;
-
-        @media (min-width: 411px) {
-          font-size: 40px;
-        }
-
-        @media (min-width: 768px) {
-          font-size: 60px;
-        }
-
-        @media (min-width: 1020px) {
-          cursor: pointer;
-        }
-      }
-
-      @media (min-width: 1024px) {
-        .result__refreshIcon:hover {
-          animation: rotate 0.5s linear both;
-        }
-
-        @keyframes rotate {
-          from {
-            transform: rotate(0);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-      }
-
-      .result__settingsIcon {
-        font-size: 35px;
-
-        @media (min-width: 411px) {
-          font-size: 40px;
-        }
-
-        @media (min-width: 768px) {
-          font-size: 60px;
-        }
-
-        @media (min-width: 1024px) {
-          transition: 0.2s;
-          cursor: pointer;
-        }
-      }
-
-      @media (min-width: 1024px) {
-        .result__settingsIcon:hover {
-          color: lightsteelblue;
-        }
-      }
     }
 
-    .result__dateOfRefresh {
+    .resultView__dateOfRefresh {
       margin: 10px 0 0;
       font-size: 15px;
 
@@ -198,7 +144,7 @@
       }
     }
 
-    .result__mainTown {
+    .resultView__mainTown {
       margin: 0 0 15px;
       font-size: 15px;
 
@@ -213,7 +159,7 @@
       @media (min-width: 768px) {
         font-size: 18px;
       }
-      .result__info {
+      .resultView__info {
         font-weight: bold;
       }
     }

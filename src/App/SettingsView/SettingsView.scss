@@ -1,4 +1,4 @@
-.settings {
+.settingsView {
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -7,12 +7,12 @@
   overflow-y: auto;
   background-color: rgba(255, 255, 255, 0.9);
 
-  .settings__wrapper {
+  .settingsView__wrapper {
     width: 100%;
     height: 100%;
     text-align: center;
 
-    .settings__title {
+    .settingsView__title {
       margin-top: 15px;
       font-size: 30px;
 
@@ -21,11 +21,11 @@
       }
     }
 
-    .settings__wrapperAddTown {
+    .settingsView__wrapperAddTown {
       display: flex;
       flex-direction: column;
 
-      .settings__input {
+      .settingsView__input {
         width: 85%;
         margin: 20px auto;
         padding: 5px;
@@ -41,7 +41,7 @@
         }
       }
 
-      .settings__input--isEmpty {
+      .settingsView__input--isEmpty {
         animation: emptyInput 1s 2 linear;
       }
 
@@ -63,7 +63,7 @@
         }
       }
 
-      .settings__btn {
+      .settingsView__btn {
         width: 60%;
         margin: 10px auto;
         padding: 5px;
@@ -89,11 +89,11 @@
         }
       }
 
-      .settings__btn--disabled {
+      .settingsView__btn--disabled {
         opacity: 0.2;
       }
 
-      .settings__checkLabel {
+      .settingsView__checkLabel {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -108,7 +108,7 @@
           font-size: 20px;
         }
 
-        .settings__check {
+        .settingsView__check {
           margin: 10px 5px;
           width: 20px;
           height: 20px;
@@ -125,11 +125,11 @@
       }
     }
 
-    .settings__wrapperFavouriteList {
+    .settingsView__wrapperFavouriteList {
       min-height: 80vh;
       padding: 15px 5px 20px;
 
-      .settings__favouriteTitle {
+      .settingsView__favouriteTitle {
         font-size: 25px;
 
         @media (min-width: 768px) {
@@ -137,10 +137,10 @@
         }
       }
 
-      .settings__favouriteList {
+      .settingsView__favouriteList {
         list-style: none;
 
-        .settings__listItem {
+        .settingsView__listItem {
           display: flex;
           flex-direction: column;
           flex-wrap: wrap;
@@ -164,13 +164,13 @@
             width: 40%;
           }
 
-          .settings__wrapperIconName {
+          .settingsView__wrapperIconName {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
 
-            .settings__homeIcon {
+            .settingsView__homeIcon {
               margin: 5px 0 5px 10px;
               color: yellowgreen;
               font-size: 25px;
@@ -180,11 +180,11 @@
               }
             }
 
-            .settings__homeIcon--disabled {
+            .settingsView__homeIcon--disabled {
               opacity: 0;
             }
 
-            .settings__townName {
+            .settingsView__townName {
               padding-left: 8px;
               text-align: left;
               flex-grow: 1;
@@ -201,7 +201,7 @@
               }
             }
 
-            .settings__trashIcon {
+            .settingsView__trashIcon {
               margin: 5px 10px 5px 0;
               color: darkred;
               font-size: 25px;
@@ -215,13 +215,13 @@
             }
           }
 
-          .settings__wrapperBtn {
+          .settingsView__wrapperBtn {
             display: flex;
             justify-content: space-around;
             width: 100%;
             margin-bottom: 5px;
 
-            .settings__btn {
+            .settingsView__btn {
               padding: 3px 5px;
               margin: 5px 0;
               font-size: 12px;
@@ -250,7 +250,7 @@
       }
     }
 
-    .settings__close {
+    .settingsView__close {
       position: absolute;
       top: 10px;
       right: 10px;
@@ -266,7 +266,7 @@
       }
     }
 
-    .settings__author {
+    .settingsView__author {
       padding: 0 5px 10px;
 
       @media (min-width: 768px) {
