@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { settingsInputContent } from "../../../store/actions/settingsInputContentAction";
+import "./SettingsInput.scss";
 
 export const SettingsInput = () => {
   const value = useSelector(state => state.settingsInputContent.value);

@@ -1,0 +1,12 @@
+.settingsView__trashIcon {
+  margin: 5px 10px 5px 0;
+  color: darkred;
+  font-size: 25px;
+
+  @media (min-width: 768px) {
+    font-size: 30px;
+  }
+  @media (min-width: 1024px) {
+    cursor: pointer;
+  }
+}

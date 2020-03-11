@@ -1,0 +1,9 @@
+@import "../../../styles/mixins.scss";
+
+.settingsView__btnAddTown {
+  @include settingsView__btnAddTown();
+}
+
+.settingsView__btn--disabled {
+  opacity: 0.2;
+}

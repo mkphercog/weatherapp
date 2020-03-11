@@ -1,0 +1,5 @@
+@import "../../../../styles/mixins.scss";
+
+.settingsView__btn {
+  @include settingsView__btnFavouriteList();
+}

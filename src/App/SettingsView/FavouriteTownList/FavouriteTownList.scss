@@ -1,0 +1,86 @@
+.settingsView__wrapperFavouriteList {
+  min-height: 80vh;
+  padding: 15px 5px 20px;
+
+  .settingsView__favouriteTitle {
+    font-size: 25px;
+
+    @media (min-width: 768px) {
+      font-size: 33px;
+    }
+  }
+
+  .settingsView__favouriteList {
+    list-style: none;
+
+    .settingsView__listItem {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      width: 100%;
+      margin: 12px 0;
+      align-items: center;
+      overflow: hidden;
+      background-color: rgba(90, 90, 90, 0.63);
+      border-radius: 10px;
+
+      @media (min-width: 768px) {
+        width: 60%;
+        margin: 15px auto;
+      }
+
+      @media (min-width: 1280px) {
+        width: 50%;
+      }
+
+      @media (min-width: 1600px) {
+        width: 40%;
+      }
+
+      .settingsView__wrapperIconName {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        .settingsView__homeIcon {
+          margin: 5px 0 5px 10px;
+          color: yellowgreen;
+          font-size: 25px;
+
+          @media (min-width: 768px) {
+            font-size: 30px;
+          }
+        }
+
+        .settingsView__homeIcon--disabled {
+          opacity: 0;
+        }
+
+        .settingsView__townName {
+          padding-left: 8px;
+          text-align: left;
+          flex-grow: 1;
+          font-size: 15px;
+          font-weight: bold;
+          color: white;
+
+          @media (min-width: 411px) {
+            font-size: 17px;
+          }
+
+          @media (min-width: 768px) {
+            font-size: 21px;
+          }
+        }
+      }
+
+      .settingsView__wrapperBtn {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}

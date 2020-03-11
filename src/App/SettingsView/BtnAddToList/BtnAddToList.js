@@ -2,34 +2,40 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { SetLocalListOfTowns } from "../../../store/actions/localStorageActions";
 import { addTownToList } from "../../../store/actions/townsListActions";
+import "./BtnAddToList.scss";
 
 export const BtnAddToList = () => {
   const currentTown = useSelector(state => state.fetchData.townData.name);
-  const currentList = useSelector(state => state.townList.towns);
+  const currentTownList = useSelector(state => state.townList.towns);
   const dispatch = useDispatch();
 
-  const isTownOnList = currentList.find(town => {
+  const isTownOnList = currentTownList.find(town => {
     if (town === currentTown) return true;
     return false;
   });
 
-  const classNames =
-    isTownOnList || currentTown === "Brak danych"
-      ? "settingsView__btn settingsView__btn--disabled"
-      : "settingsView__btn";
+  const isTownOnListOrNoResult = isTownOnList || currentTown === "Brak danych";
+
+  const classNames = isTownOnListOrNoResult
+    ? "settingsView__btnAddTown settingsView__btn--disabled"
+    : "settingsView__btnAddTown";
+
   return (
     <button
-      disabled={isTownOnList || currentTown === "Brak danych"}
+      disabled={isTownOnListOrNoResult}
       className={classNames}
       onClick={() => {
         dispatch(addTownToList(currentTown));
-        SetLocalListOfTowns([...currentList, currentTown]);
+        SetLocalListOfTowns([...currentTownList, currentTown]);
       }}
     >
-      {isTownOnList || currentTown === "Brak danych" ? (
+      {isTownOnListOrNoResult ? (
         "Nic do dodania"
       ) : (
-        <p>Dodaj {<span>{currentTown}</span>} do listy</p>
+        <p>
+          Dodaj {<span className="settingsView__TownToAdd">{currentTown}</span>}{" "}
+          do listy
+        </p>
       )}
     </button>
   );

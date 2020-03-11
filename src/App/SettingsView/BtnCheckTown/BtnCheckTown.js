@@ -6,13 +6,13 @@ import {
   settingsInputEmpty
 } from "../../../store/actions/settingsInputContentAction";
 
-export const BtnAddTown = () => {
+export const BtnCheckTown = () => {
   const inputValue = useSelector(state => state.settingsInputContent.value);
   const dispatch = useDispatch();
 
   return (
     <button
-      className="settingsView__btn"
+      className="settingsView__btnAddTown"
       onClick={() => {
         if (inputValue === "") {
           dispatch(settingsInputEmpty(true));

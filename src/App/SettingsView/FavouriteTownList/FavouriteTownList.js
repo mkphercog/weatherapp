@@ -1,21 +1,17 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  setMainTown,
-  deleteTownFromList
-} from "../../../store/actions/townsListActions";
-import { fetchData } from "../../../store/actions/fetchDataAction";
-import {
-  SetLocalMainTown,
-  SetLocalListOfTowns
-} from "../../../store/actions/localStorageActions";
-import { hideSettings } from "../../../store/actions/settingsVisibleActions";
+import { useSelector } from "react-redux";
+import { SetLocalListOfTowns } from "../../../store/actions/localStorageActions";
+import { BtnCheckWeather } from "./BtnCheckWeather/BtnCheckWeather";
+import { BtnSetMainTown } from "./BtnSetMainTown/BtnSetMainTown";
+import { BtnTrash } from "./BtnTrash/BtnTrash";
+import "./FavouriteTownList.scss";
 
 export const FavouriteTownList = () => {
   const townList = useSelector(state => state.townList.towns);
   const mainTownRedux = useSelector(state => state.townList.mainTown);
-  const dispatch = useDispatch();
+
   SetLocalListOfTowns(townList);
+
   const arrOfTowns = townList.map((town, index) => (
     <li className="settingsView__listItem" key={index}>
       <div className="settingsView__wrapperIconName">
@@ -25,39 +21,12 @@ export const FavouriteTownList = () => {
           <i className="fas fa-home settingsView__homeIcon settingsView__homeIcon--disabled"></i>
         )}
         <span className="settingsView__townName">{town}</span>
-        <i
-          onClick={() => {
-            dispatch(deleteTownFromList(town));
-            if (town === mainTownRedux) {
-              dispatch(setMainTown(""));
-              SetLocalMainTown("");
-            }
-            SetLocalListOfTowns([]);
-          }}
-          className="fas fa-trash-alt settingsView__trashIcon"
-        ></i>
+        <BtnTrash town={town} />
       </div>
+
       <div className="settingsView__wrapperBtn">
-        {mainTownRedux === town ? null : (
-          <button
-            className="settingsView__btn"
-            onClick={() => {
-              dispatch(setMainTown(town));
-              SetLocalMainTown(town);
-            }}
-          >
-            Główne miasto
-          </button>
-        )}
-        <button
-          className="settingsView__btn"
-          onClick={() => {
-            dispatch(fetchData(town));
-            dispatch(hideSettings());
-          }}
-        >
-          Sprawdź pogodę
-        </button>
+        {mainTownRedux === town ? null : <BtnSetMainTown town={town} />}
+        <BtnCheckWeather town={town} />
       </div>
     </li>
   ));
@@ -71,5 +40,13 @@ export const FavouriteTownList = () => {
 
   const showTowns = [mainTown, otherTowns.reverse()];
 
-  return showTowns;
+  return (
+    <ul className="settingsView__favouriteList">
+      {townList.length ? (
+        showTowns
+      ) : (
+        <li className="settingsView__listItem">Brak danych.</li>
+      )}
+    </ul>
+  );
 };

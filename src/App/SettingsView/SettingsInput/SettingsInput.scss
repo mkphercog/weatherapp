@@ -1,0 +1,37 @@
+.settingsView__input {
+  width: 85%;
+  margin: 20px auto;
+  padding: 5px;
+  outline: none;
+  background-color: #ddd;
+  border: none;
+  border-bottom: 2px solid black;
+  font-size: 15px;
+
+  @media (min-width: 768px) {
+    width: 50%;
+    font-size: 20px;
+  }
+}
+
+.settingsView__input--isEmpty {
+  animation: emptyInput 1s 2 linear;
+}
+
+@keyframes emptyInput {
+  0% {
+    box-shadow: 0 0 0 0 darkred;
+  }
+  40% {
+    box-shadow: 0 0 2px 1px darkred;
+  }
+  50% {
+    box-shadow: 0 0 6px 3px darkred;
+  }
+  60% {
+    box-shadow: 0 0 2px 1px darkred;
+  }
+  100% {
+    box-shadow: 0 0 0 0 darkred;
+  }
+}
