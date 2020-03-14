@@ -18,8 +18,8 @@ export const BtnCheckTown = () => {
           dispatch(settingsInputEmpty(true));
           setTimeout(() => dispatch(settingsInputEmpty(false)), 2000);
         } else {
-          inputValue.trim();
-          dispatch(fetchData(inputValue));
+          const townWithoutExtraSpaces = inputValue.replace(/\s+/g, " ").trim();
+          dispatch(fetchData(townWithoutExtraSpaces));
           dispatch(settingsInputContent(""));
         }
       }}
