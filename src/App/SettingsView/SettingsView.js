@@ -9,11 +9,11 @@ import { settingsScrollUp } from "../../store/actions/scrollsUp";
 import "./SettingsView.scss";
 
 export const SettingsView = () => {
-  const isVisible = useSelector(state => state.settingsVisible.isVisible);
+  const isVisible = useSelector((state) => state.settingsVisible.isVisible);
   const [visible, setVisible] = useState(0);
   const animationSpeed = 10;
 
-  const settingsAnimation = num => {
+  const settingsAnimation = (num) => {
     setVisible(visible + num);
   };
 
@@ -32,7 +32,7 @@ export const SettingsView = () => {
       id="settingsView"
       style={{
         display: `${visible !== 0 ? "block" : "none"}`,
-        opacity: `${visible}%`
+        opacity: `${visible}%`,
       }}
     >
       <div className="settingsView__wrapper">
@@ -54,7 +54,15 @@ export const SettingsView = () => {
         <CloseSettings />
 
         <p className="settingsView__author">
-          Projekt i realizacja: Marcin Hercog
+          Projekt i realizacja:{" "}
+          <a
+            className="settingsView__author--link"
+            href="https://mkphercog.github.io/mywebsite"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Marcin Hercog
+          </a>
         </p>
       </div>
     </div>
