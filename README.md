@@ -10,6 +10,7 @@ git clone https://github.com/mkphercog/weatherapp
 
 ## In this project I'm using:
 
+- react (CRA)
 - redux
 - axios
 - preprocessor SASS with methodology BEM
