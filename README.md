@@ -5,7 +5,13 @@ This application uses data from API Open Weather Map to check weather in every t
 ## If you want you can copy this app, for that use command:
 
 ```
-git clone https://github.com/mkphercog/weatherapp
+git clone https://github.com/mkphercog/weatherapp.git
+```
+
+### After that in cloned folder use:
+
+```
+npm install
 ```
 
 ## In this project I'm using:
